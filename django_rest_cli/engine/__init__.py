@@ -1,38 +1,41 @@
 import argparse
+from calendar import c
 import sys
 
 from django_rest_cli.engine.commands import (
-    start_apps, start_project
+    start_project
 )
-
-
-parser = argparse.ArgumentParser()
-
-parser.add_argument(
-    "what", type=str, help="What is to be started: 'app' for app, 'project' for project"
-)
-parser.add_argument(
-    "name", type=str, help="The name of the app or project to be started"
-)
-parser.add_argument(
-    "directory",
-    nargs="?",
-    type=str,
-    help="Optional base directory to start the app or project in",
-    default=None,
+from django_rest_cli.engine.cli_args_parsers import (
+    ActionArgsParser, 
+    StartprojectArgsParser, 
+    CrudengineArgsParser,
+    create_apps
 )
 
 
 def main():
-    args = parser.parse_args()
+    action_parser = ActionArgsParser()
+    args = action_parser.args
 
-    if args.what == "startapps":
-        start_apps(args.name, args.directory)
-    elif args.what == "startproject":
-        start_project(args.name, args.directory)
+    if args.action == "startapps":
+        if args.apps:
+            create_apps(args.apps)
+        else:
+            sys.stderr.write(
+                f"'{args.action}' expects one or more app names \n"
+                f"E.g. startapps app_1 app_2 app_3\n"
+            )
+            sys.exit(1)
+
+    elif args.action == "startproject":
+        # start_project(args.name) # project created in the directory where command is invoked
+        print("logic for this still in the works")
+
+    elif args.action == "generate-crud-endpoints":
+        print("command logic still in the works")
     else:
         sys.stderr.write(
-            f"'{args.what}' is not a valid thing to start. "
-            f"It should be either 'startapps' or 'startproject'\n"
+            f"'{args.action}' is not a valid action"
+            f"It should be either 'startapps', 'startproject' or 'generate-crud-endpoints'\n"
         )
         sys.exit(1)
