@@ -35,7 +35,7 @@ def main():
         print("command logic still in the works")
     else:
         sys.stderr.write(
-            f"'{args.action}' is not a valid action"
+            f"'{args.action}' is not a valid action\n"
             f"It should be either 'startapps', 'startproject' or 'generate-crud-endpoints'\n"
         )
         sys.exit(1)
