@@ -1,6 +1,10 @@
 import argparse
 from calendar import c
+from importlib import import_module
 import sys
+
+from django_rest_cli.engine.exceptions import CommandError
+from django_rest_cli.engine.utils import validate_name
 
 from django_rest_cli.engine.commands import (
     start_project
@@ -28,11 +32,17 @@ def main():
             sys.exit(1)
 
     elif args.action == "startproject":
-        # start_project(args.name) # project created in the directory where command is invoked
-        print("logic for this still in the works")
+        if args.project_name:
+            start_project(args.project_name)
+        else:
+            sys.stderr.write(
+                f"'{args.action}' expects a valid project name \n"
+            )
+            sys.exit(1)
 
     elif args.action == "generate-crud-endpoints":
         print("command logic still in the works")
+
     else:
         sys.stderr.write(
             f"'{args.action}' is not a valid action\n"
