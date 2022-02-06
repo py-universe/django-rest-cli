@@ -12,18 +12,57 @@ class Startable(enum.Enum):
     APP = 1
 
 
-def start(what: Startable, name: str, directory: Optional[str] = None):
-    directive = f'start{what.name.lower()}'
-    cmd: List[str]
-    cmd = ['django-admin', directive, name]
+@enum.unique
+class StartType(enum.Enum):
+    TEMPLATE = 0
+    MANUAL = 1
 
-    if directory is not None:
-        cmd.append(directory)
 
-    templates_dir_name = f'{what.name}_TEMPLATES_DIR'
-    cmd.extend(['--template', str(getattr(paths, templates_dir_name))])
+class Base(object):
 
-    try:
-        subprocess.run(cmd, check=True)
-    except subprocess.CalledProcessError:
-        sys.exit(1)
+    def _run_cmd_command(directive, name, directory, template):
+        cmd: List[str]
+        cmd = ['django-admin', directive, name]
+
+        if directory is not None:
+            cmd.append(directory)
+
+        cmd.extend(['--template', str(getattr(paths, template))])
+
+        try:
+            subprocess.run(cmd, check=True)
+        except subprocess.CalledProcessError:
+            sys.exit(1)
+
+
+    def start_project(
+        self,
+        name: str,
+        starttype: StartType,
+        directory: Optional[str] = None, 
+    ):
+        what = Startable.PROJECT
+        directive = f'start{what.name.lower()}'
+        template = None
+
+        if starttype.name.lower() == 'template':
+            template = ""
+        else:
+            template = f'{what.name}_TEMPLATES_DIR'
+
+        self._run_cmd_command(
+            directive, name, directory, template
+        )
+        
+    def start_app(
+        self, 
+        name: str,
+        directory: Optional[str] = None, 
+    ):
+        what = Startable.APP
+        directive = f'start{what.name.lower()}'
+        template = f'{what.name}_TEMPLATES_DIR'
+
+        self._run_cmd_command(
+            directive, name, directory, template
+        )

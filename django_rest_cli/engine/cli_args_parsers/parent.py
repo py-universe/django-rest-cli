@@ -10,12 +10,15 @@ class ActionArgsParser(ParentArgsParser):
 
     def __init__(self):
         super().__init__()
+        
         self.action_parser = self.parent_parser
+        
         self.action_parser.add_argument(
             "action", 
             type=str, 
             help="what action to be performed: 'startproject', 'startapp"
         )
+        
         # This is an optional arg passed when creating an app in a project
         # It accepts multiple app names
         self.action_parser.add_argument(
@@ -24,10 +27,5 @@ class ActionArgsParser(ParentArgsParser):
             help="name(s) of app(s) to be created'",
             default=None # If no app name is passed, defaults to None
         )
-        # This is an optional arg passed when starting a new project
-        self.action_parser.add_argument(
-            "project_name", 
-            help="name of project to be started",
-            default=None # If no project name is passed, defaults to None
-        )
+        
         self.args = self.action_parser.parse_args()

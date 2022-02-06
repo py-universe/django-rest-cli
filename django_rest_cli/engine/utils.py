@@ -1,4 +1,4 @@
-from django_rest_cli.engine import CommandError
+from .exceptions import CommandError
 from importlib import import_module
 
 

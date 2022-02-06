@@ -1,5 +1,3 @@
-import os
-import sys
 from django_rest_cli.engine import main
 
 
