@@ -1,9 +1,8 @@
 # import modules to be used in other modules in this project
-from django_rest_cli.engine.utils import validate_name
+from distutils.log import error
+from django_rest_cli.engine.utils import validate_name, print_error_message
 from django_rest_cli.engine.exceptions import CommandError
 # ___________________________________________________ end
-
-import sys
 
 from django_rest_cli.engine.commands import (
     StartApp,
@@ -22,11 +21,8 @@ def main():
         if args.apps:
             StartApp.create_multiple_apps(args.apps)
         else:
-            sys.stderr.write(
-                f"'{args.action}' expects one or more app names \n"
-                f"E.g. startapps app_1 app_2 app_3\n"
-            )
-            sys.exit(1)
+            error_text = f"'{args.action}' expects one or more app names \n E.g. startapps app_1 app_2 app_3\n"
+            print_error_message(error_text)
 
     elif args.action == "startproject":
             StartProject.start_project()
@@ -35,8 +31,6 @@ def main():
         print("command logic still in the works")
 
     else:
-        sys.stderr.write(
-            f"'{args.action}' is not a valid action\n"
-            f"It should be either 'startapps', 'startproject' or 'generate-crud-endpoints'\n"
-        )
-        sys.exit(1)
+        error_text = f"'{args.action}' is not a valid action\n" \
+             "It should be either 'startapps', 'startproject' or 'generate-crud-endpoints'\n"
+        print_error_message(error_text)

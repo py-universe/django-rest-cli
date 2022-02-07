@@ -1,14 +1,11 @@
-from importlib import import_module
 import pathlib
-import sys
 from typing import Optional
-from wsgiref import validate
 
 from PyInquirer import prompt, print_json
 from examples import custom_style_3
 from prompt_toolkit.validation import Validator, ValidationError
 
-from .base import Base, Startable, StartType
+from .base import Base, StartType
 from django_rest_cli.engine import validate_name
 
 
@@ -36,14 +33,14 @@ class StartProject(Base):
             {
                 'type': 'input',
                 'name': 'project_name',
-                'message': 'project name must be a valid python variable',
-                'validate': 'validate_name'
+                'message': 'project name must be a valid python variable: ',
+                'validate': validate_name
             },
-
+ 
             {
                 'type': 'list',
                 'name': 'auth',
-                'message': 'what authentication scheme?',
+                'message': 'what authentication scheme? ',
                 'choices': [
                     "basic token auth",
                     "jwt",
@@ -54,25 +51,25 @@ class StartProject(Base):
             {
                 'type': "confirm",
                 "name": "pytest",
-                "message": "Install and setup django-pytest for writing unit tests with Pytest?",
+                "message": "Install and setup django-pytest for writing unit tests with Pytest? ",
             },
 
             {
                 'type': "confirm",
                 "name": "dotenv",
-                "message": "Install and Setup dotenv for managing secret keys",
+                "message": "Install and Setup dotenv for managing secret keys? ",
             },
 
             {
                 'type': "confirm",
                 "name": "split_settings",
-                "message": "Install and Setup django_split_settings for modularizing the settings.py file?",
+                "message": "Install and Setup django_split_settings for modularizing the settings.py file? ",
             },
 
             {
                 'type': "confirm",
                 "name": "django_rest_swagger",
-                "message": "Install and Setup django_rest_swagger for managing docs",
+                "message": "Install and Setup django_rest_swagger for managing docs? ",
             },
         ]
 

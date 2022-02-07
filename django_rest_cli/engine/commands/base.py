@@ -34,9 +34,9 @@ class Base(object):
         except subprocess.CalledProcessError:
             sys.exit(1)
 
-
+    @classmethod
     def start_project(
-        self,
+        cls,
         name: str,
         starttype: StartType,
         directory: Optional[str] = None, 
@@ -50,12 +50,13 @@ class Base(object):
         else:
             template = f'{what.name}_TEMPLATES_DIR'
 
-        self._run_cmd_command(
+        cls._run_cmd_command(
             directive, name, directory, template
         )
-        
+
+    @classmethod 
     def start_app(
-        self, 
+        cls,
         name: str,
         directory: Optional[str] = None, 
     ):
@@ -63,6 +64,6 @@ class Base(object):
         directive = f'start{what.name.lower()}'
         template = f'{what.name}_TEMPLATES_DIR'
 
-        self._run_cmd_command(
+        cls._run_cmd_command(
             directive, name, directory, template
         )
