@@ -1,6 +1,8 @@
 # import modules to be used in other modules in this project
 from distutils.log import error
-from django_rest_cli.engine.utils import validate_name, print_error_message
+from django_rest_cli.engine.utils import (
+    validate_name, print_error_message, rename_file
+)
 from django_rest_cli.engine.exceptions import CommandError
 # ___________________________________________________ end
 

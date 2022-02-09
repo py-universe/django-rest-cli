@@ -1,9 +1,10 @@
 import enum
 import subprocess
 import sys
+import pathlib
 from typing import Optional, List
 
-from django_rest_cli.engine import paths
+from django_rest_cli.engine import paths, rename_file
 
 
 @enum.unique
@@ -14,12 +15,13 @@ class Startable(enum.Enum):
 
 @enum.unique
 class StartType(enum.Enum):
-    TEMPLATE = 0
+    TEMPLATE = 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     MANUAL = 1
 
 
 class Base(object):
 
+    @staticmethod
     def _run_cmd_command(directive, name, directory, template):
         cmd: List[str]
         cmd = ['django-admin', directive, name]
@@ -34,13 +36,30 @@ class Base(object):
         except subprocess.CalledProcessError:
             sys.exit(1)
 
+    @staticmethod
+    def _follow_up_start_project(name: str, directory: Optional[str] = None):
+        if directory is None:
+            manage_dir = pathlib.Path('.') / name
+        else:
+            manage_dir = pathlib.Path(directory)
+
+        manage_dir.resolve(strict=True)
+        name_change_map = {
+            'secrets.py': '.env',
+            'gitignore.py': '.gitignore',
+            'requirements.py': 'requirements.txt',
+        }
+
+        for (old_name, new_name) in name_change_map.items():
+            rename_file(old_name, new_name, base_dir=manage_dir)
+
     @classmethod
     def start_project(
         cls,
         name: str,
         starttype: StartType,
         directory: Optional[str] = None, 
-    ):
+    ) -> None:
         what = Startable.PROJECT
         directive = f'start{what.name.lower()}'
         template = None
@@ -53,13 +72,14 @@ class Base(object):
         cls._run_cmd_command(
             directive, name, directory, template
         )
+        cls._follow_up_start_project(name)
 
     @classmethod 
     def start_app(
         cls,
         name: str,
         directory: Optional[str] = None, 
-    ):
+    ) -> None:
         what = Startable.APP
         directive = f'start{what.name.lower()}'
         template = f'{what.name}_TEMPLATES_DIR'
