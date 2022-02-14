@@ -5,7 +5,30 @@ import pathlib
 from typing import Optional, List
 
 from django_rest_cli.engine import paths, rename_file
+"""
+    after getting the presets what's next?
 
+    preset:
+        - Always add a requirements.txt file to every project
+        - Always add setup.cfg file
+        - Pytest
+            - if yes, add pytest to requirements file
+            - update required settings in setup.cfg file
+
+        - dotenv
+            - if yes, add dotenv to requirements file
+            - add .env file
+
+    devs should be able to add dependencies separately through add commands
+    E.g drf add dotenv pytest drf_spectacular
+
+    Blocker: How do I add dependencies to a new project
+    - adding a dependency entails:
+    Approach one:  adding dependency files, and editing necessary files
+    Approach two: store dependency files as sub folders and each time the 
+    dependency is selected, pick the dependency files from the folder and add
+    it to the project
+"""
 
 @enum.unique
 class Startable(enum.Enum):
@@ -72,7 +95,7 @@ class Base(object):
         cls._run_cmd_command(
             directive, name, directory, template
         )
-        cls._follow_up_start_project(name)
+        # cls._follow_up_start_project(name)
 
     @classmethod 
     def start_app(
