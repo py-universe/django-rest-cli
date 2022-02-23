@@ -1,5 +1,5 @@
 from typing import Optional, List
-from .base import Base, Startable
+from .base import Base
 
 
 class StartApp(Base):

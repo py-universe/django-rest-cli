@@ -27,7 +27,20 @@ from django_rest_cli.engine import paths, rename_file
     Approach one:  adding dependency files, and editing necessary files
     Approach two: store dependency files as sub folders and each time the 
     dependency is selected, pick the dependency files from the folder and add
-    it to the project
+    it to the project.
+
+    for auth, split-settings, basically packages that reuire multiple files,
+    we'd use a template folder. for single file or no file deps, we will create the file
+    and make neccessary modifications
+
+    How to add deps to requirements.txt file... pip install the specified dependency
+    and pip freeze the requirements to the pip file
+
+    Breaking it down to sub problems. What does adding a dependency entails?
+    - adding the dependency required files.
+    - adding the dependency settings
+    - adding the dependency to the requirements.txt file
+    - Installing it to the user's virtual env
 """
 
 @enum.unique
@@ -82,6 +95,7 @@ class Base(object):
         name: str,
         starttype: StartType,
         directory: Optional[str] = None, 
+        presets: Optional[dict] = None, 
     ) -> None:
         what = Startable.PROJECT
         directive = f'start{what.name.lower()}'
@@ -95,6 +109,8 @@ class Base(object):
         cls._run_cmd_command(
             directive, name, directory, template
         )
+
+        #d Do something with the presets here
         # cls._follow_up_start_project(name)
 
     @classmethod 

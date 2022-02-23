@@ -1,8 +1,8 @@
-from django_rest_cli.engine import main
+from django_rest_cli.engine import Cli
 
 
 if __name__ == '__main__':
-    main()
+    Cli.main()
 
 
 # this is going to be our entry point for running management commands.
