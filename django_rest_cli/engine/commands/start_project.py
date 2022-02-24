@@ -1,7 +1,7 @@
 from typing import Optional
 
 from .base import Base, StartType
-from django_rest_cli.engine.cli_args_parsers import ProjectConfigMixin
+from django_rest_cli.engine import ProjectConfigMixin
 
 
 class StartProject(ProjectConfigMixin, Base):
