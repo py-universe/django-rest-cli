@@ -55,11 +55,11 @@ class ProjectConfigMixin(object):
                 'name': 'user_option',
                 'message': 'How do you want to start your project: ',
                 'choices': [
-                    "use default template(It uses the Django-rest-cookietier template. Internet connection required ",
+                    "use default template",
                     "manually select feaures(Offers more flexibility) "
                 ]
             }
         ]
         project_style = prompt(template_or_manual, style=custom_style_3)
-        
-        return project_style.get('user_options')
+
+        return project_style.get('user_option')

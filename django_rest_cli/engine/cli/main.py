@@ -1,6 +1,11 @@
 import argparse
 from .cli_commands import CliCommands
 
+
+def test_func(args):
+    print(f"function invoked--args: {args}")
+
+
 def main():
     parser = argparse.ArgumentParser(prog="drf-cli")
     subparsers = parser.add_subparsers()
@@ -28,23 +33,14 @@ def main():
     startproject_apps.set_defaults(func=CliCommands.start_apps)
 
     # Add plugins command parser
-    startproject_apps = subparsers.add_parser(
+    project_plugins = subparsers.add_parser(
         'add'
     ) 
-    startproject_apps.add_argument(
+    project_plugins.add_argument(
         "plugins", 
         nargs='*' , # Accept multiple app names
         help="name(s) of plugin(s) to be added to project'",
     )
-    
-    # Generate crud endpoints command parser
-    startproject_apps = subparsers.add_parser(
-        'add'
-    ) 
-    startproject_apps.add_argument(
-        "plugins", 
-        nargs='*' , # Accept multiple plugin names
-        help="name(s) of plugin(s) to be added to project'",
-    )
 
     args = parser.parse_args()
+    args.func(args) # Invoke whatever function was selected

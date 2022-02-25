@@ -1,3 +1,6 @@
+from PyInquirer import prompt
+from examples import custom_style_3
+
 from django_rest_cli.engine.commands import (
     StartApp,
     StartProject
@@ -13,5 +16,6 @@ class CliCommands(ProjectConfigMixin):
         
     @staticmethod
     def start_project(args):
-        mode = ProjectConfigMixin.template_or_manual
-        StartProject(args.project_name, mode)
+        mode = ProjectConfigMixin.template_or_manual()
+        print(f"mode: {mode}")
+        StartProject.start_project(args.project_name, mode)

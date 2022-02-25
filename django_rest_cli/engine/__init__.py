@@ -3,5 +3,4 @@ from django_rest_cli.engine.utils import (
 )
 from django_rest_cli.engine.exceptions import CommandError
 from django_rest_cli.engine.cli import main
-from django_rest_cli.engine.cli import ProjectConfigMixin
 

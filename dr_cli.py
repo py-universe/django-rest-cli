@@ -1,4 +1,3 @@
-from re import I
 from django_rest_cli.engine import main
 
 

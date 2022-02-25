@@ -1,7 +1,7 @@
 from typing import Optional
 
 from .base import Base, StartType
-from django_rest_cli.engine import ProjectConfigMixin
+from django_rest_cli.engine.cli import ProjectConfigMixin
 
 
 class StartProject(ProjectConfigMixin, Base):
@@ -22,7 +22,7 @@ class StartProject(ProjectConfigMixin, Base):
             )
 
         else:
-            presets = ProjectConfigMixin.project_configs
+            presets = ProjectConfigMixin.project_configs()
             Base.start_project(
                 project_name,
                 StartType.MANUAL,
