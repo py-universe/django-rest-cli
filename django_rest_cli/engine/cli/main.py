@@ -33,14 +33,15 @@ def main():
     startproject_apps.set_defaults(func=CliCommands.start_apps)
 
     # Add plugins command parser
-    project_plugins = subparsers.add_parser(
+    add_project_plugins = subparsers.add_parser(
         'add'
     ) 
-    project_plugins.add_argument(
+    add_project_plugins.add_argument(
         "plugins", 
         nargs='*' , # Accept multiple app names
         help="name(s) of plugin(s) to be added to project'",
     )
+    add_project_plugins.set_defaults(func=CliCommands.add_plugins)
 
     args = parser.parse_args()
     args.func(args) # Invoke whatever function was selected

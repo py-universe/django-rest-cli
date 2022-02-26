@@ -3,12 +3,17 @@ from examples import custom_style_3
 
 from django_rest_cli.engine.commands import (
     StartApp,
-    StartProject
+    StartProject,
+    AddPlugin
 )
 from .mixins import ProjectConfigMixin
 
 
 class CliCommands(ProjectConfigMixin):
+
+    @staticmethod
+    def add_plugins(args):
+        AddPlugin.add_plugins(args.plugins)
 
     @staticmethod
     def start_apps(args):
