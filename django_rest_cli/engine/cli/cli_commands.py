@@ -7,6 +7,7 @@ from django_rest_cli.engine.commands import (
     AddPlugin
 )
 from .mixins import ProjectConfigMixin
+from .input_validators import validate_name
 
 
 class CliCommands(ProjectConfigMixin):
@@ -21,6 +22,8 @@ class CliCommands(ProjectConfigMixin):
         
     @staticmethod
     def start_project(args):
+        project_name = args.project_name
+        validate_name(project_name)
+
         mode = ProjectConfigMixin.template_or_manual()
-        print(f"mode: {mode}")
-        StartProject.start_project(args.project_name, mode)
+        StartProject.start_project(project_name, mode)
