@@ -1,6 +1,7 @@
 from typing import Optional, List
-from django_rest_cli.engine.plugins import plugin_trigger
 
+from django_rest_cli.engine.plugins import plugin_trigger
+from .validator import is_django_project_directory
 
 class AddPlugin():
     """
@@ -34,7 +35,8 @@ class AddPlugin():
 
     @classmethod
     def add_plugins(cls, plugins: List) -> None:
-        # Here first check to see if the plugin command is being invoked within
-        # A django project directory
+        # Check is command is executed within a django project directory
+        is_django_project_directory()
+
         for plugin in plugins:
             cls._add(plugin) # apps created in the directory where command is invoked
