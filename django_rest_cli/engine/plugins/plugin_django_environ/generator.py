@@ -1,3 +1,5 @@
+import pathlib
+
 from ..base import BasePlugin
 
 
@@ -16,4 +18,5 @@ class DjangoEnviron(BasePlugin):
 
     @classmethod
     def generator(cls):
-        print('django-environ generator invoked')
+        path = pathlib.Path('.') / '.env'
+        path.touch(mode=438, exist_ok=False)

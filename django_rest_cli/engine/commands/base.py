@@ -5,20 +5,6 @@ from typing import Optional, List
 
 from django_rest_cli.engine import paths
 
-"""
-    after getting the presets what's next?
-
-    preset:
-        - Always add a requirements.txt file to every project
-        - Always add setup.cfg file
-        - Pytest
-            - if yes, add pytest to requirements file
-            - update required settings in setup.cfg file
-
-        - dotenv
-            - if yes, add dotenv to requirements file
-            - add .env file
-"""
 
 @enum.unique
 class Startable(enum.Enum):

@@ -35,7 +35,7 @@ class AddPlugin():
 
     @classmethod
     def add_plugins(cls, plugins: List) -> None:
-        # Check is command is executed within a django project directory
+        # Check if command is executed within a django project directory
         is_django_project_directory()
 
         for plugin in plugins:
