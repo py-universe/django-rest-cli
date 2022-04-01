@@ -10,12 +10,12 @@ from .input_validators import validate_name
 class CliCommands(ProjectConfigMixin):
 
     @staticmethod
-    def add_plugins(args) -> None:
-        AddPlugin.add_plugins(args.plugins)
+    async def add_plugins(args) -> None:
+        await AddPlugin.add_plugins(args.plugins)
 
     @staticmethod
-    def start_apps(args) -> None:
-        StartApp.create_multiple_apps(args.apps)
+    async def start_apps(args) -> None:
+        await StartApp.create_multiple_apps(args.apps)
         
     @staticmethod
     def start_project(args) -> None:

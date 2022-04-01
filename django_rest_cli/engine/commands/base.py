@@ -21,7 +21,7 @@ class StartType(enum.Enum):
 class Base(object):
 
     @staticmethod
-    def run_cmd_command(
+    async def run_cmd_command(
         directive: str, name: str, directory: str, template: str
     ) -> None:
         cmd: List[str]
@@ -34,5 +34,6 @@ class Base(object):
 
         try:
             subprocess.run(cmd, check=True)
+            print(f"{name} successfully created\n")
         except subprocess.CalledProcessError:
-            sys.exit(1)
+            pass

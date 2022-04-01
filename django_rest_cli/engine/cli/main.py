@@ -1,8 +1,10 @@
+import asyncio
 from argparse import ArgumentParser
+
 from .cli_commands import CliCommands
 
 
-def mainp():
+async def main():
     parser: ArgumentParser = ArgumentParser(prog="drf-cli")
     subparsers = parser.add_subparsers()
 
@@ -40,4 +42,11 @@ def mainp():
     add_project_plugins.set_defaults(func=CliCommands.add_plugins)
 
     args = parser.parse_args()
-    args.func(args) # Invoke whatever function was selected
+    # Await asynchronous functions
+    if (
+        args.func.__name__ == "start_apps"
+        or args.func.__name__ == "add_plugins"
+    ):
+        await args.func(args)  # Invoke whatever function was selected async
+    else:
+        args.func(args)  # Sync 
