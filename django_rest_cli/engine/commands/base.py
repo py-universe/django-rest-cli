@@ -1,7 +1,6 @@
 import enum
 import subprocess
-import sys
-from typing import Optional, List
+from typing import List
 
 from django_rest_cli.engine import paths
 

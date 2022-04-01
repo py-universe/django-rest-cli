@@ -1,8 +1,6 @@
 from django.conf import settings
 
 from typing import Optional, List
-import os
-import pathlib
 import asyncio
 
 from .base import Base, Startable
@@ -11,7 +9,8 @@ from .base import Base, Startable
 class StartApp(Base):
 
     @staticmethod
-    def _update_installed_apps(apps: List) -> None:
+    def __update_installed_apps(apps: List) -> None:
+        # TODO: how can I access the current project's settings.py module here??
         print(getattr(settings, 'INSTALLED_APPS')) 
 
     @staticmethod
@@ -33,11 +32,6 @@ class StartApp(Base):
                 asyncio.ensure_future(cls.__start(app))
             )
         await asyncio.gather(*funcs)
-        
-        # response = await asyncio.gather(*funcs)
-        # return response
-        # for app in apps:
-        #     cls._start(app) # apps created in the directory where command is invoked
 
-        # cls._update_installed_apps(apps) # Not working
+        cls.__update_installed_apps(apps) # Not working
         

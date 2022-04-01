@@ -18,9 +18,9 @@ class CliCommands(ProjectConfigMixin):
         await StartApp.create_multiple_apps(args.apps)
         
     @staticmethod
-    def start_project(args) -> None:
+    async def start_project(args) -> None:
         project_name: str = args.project_name
         validate_name(project_name)
 
         mode: str = ProjectConfigMixin.template_or_manual()
-        StartProject.start_project(project_name, mode)
+        await StartProject.start_project(project_name, mode)

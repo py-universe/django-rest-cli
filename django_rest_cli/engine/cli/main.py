@@ -46,6 +46,7 @@ async def main():
     if (
         args.func.__name__ == "start_apps"
         or args.func.__name__ == "add_plugins"
+        or args.func.__name__ == "start_project"
     ):
         await args.func(args)  # Invoke whatever function was selected async
     else:

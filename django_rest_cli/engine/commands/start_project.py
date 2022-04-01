@@ -29,7 +29,7 @@ class StartProject(ProjectConfigMixin, Base):
             rename_file(old_name, new_name, base_dir=manage_dir)
 
     @classmethod
-    def _start(
+    async def __start(
         cls,
         name: str,
         starttype: StartType,
@@ -45,7 +45,7 @@ class StartProject(ProjectConfigMixin, Base):
         else:
             template = f'{what.name}_TEMPLATES_DIR'
 
-        Base.run_cmd_command(
+        await Base.run_cmd_command(
             directive, name, directory, template
         )
 
@@ -55,7 +55,7 @@ class StartProject(ProjectConfigMixin, Base):
             # cls._follow_up_start_project(name)
 
     @classmethod
-    def start_project(
+    async def start_project(
         cls, 
         project_name: str, 
         mode: str,
@@ -63,7 +63,7 @@ class StartProject(ProjectConfigMixin, Base):
     ) -> None:
         
         if "default template" in mode:
-            cls._start(
+            await cls.__start(
                 project_name, 
                 StartType.TEMPLATE,
                 directory,
@@ -71,7 +71,7 @@ class StartProject(ProjectConfigMixin, Base):
 
         else:
             presets = ProjectConfigMixin.project_configs()
-            cls._start(
+            await cls.__start(
                 project_name,
                 StartType.MANUAL,
                 directory,
