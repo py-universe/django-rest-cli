@@ -5,8 +5,8 @@ from examples import custom_style_3
 class ProjectConfigMixin(object):
 
     @staticmethod
-    def project_configs():
-        presets = [
+    def project_configs() -> dict:
+        presets: list = [
  
             {
                 'type': 'list',
@@ -44,12 +44,12 @@ class ProjectConfigMixin(object):
             },
         ]
         
-        presets = prompt(presets, style=custom_style_3)
+        presets: dict = prompt(presets, style=custom_style_3)
         return presets
         
     @staticmethod
-    def template_or_manual():
-        template_or_manual = [
+    def template_or_manual() -> str:
+        template_or_manual: list = [
             {
                 'type': 'list',
                 'name': 'user_option',
@@ -60,6 +60,6 @@ class ProjectConfigMixin(object):
                 ]
             }
         ]
-        project_style = prompt(template_or_manual, style=custom_style_3)
+        project_style: dict = prompt(template_or_manual, style=custom_style_3)
 
         return project_style.get('user_option')

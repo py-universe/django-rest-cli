@@ -1,8 +1,12 @@
+import time
 from django_rest_cli.engine import main
 
 
 if __name__ == '__main__':
+    start: time = time.perf_counter()
     main()
+    interval: time = time.time - start
+    print(f"Execution Time: {interval}")
 
 
 # this is going to be our entry point for running management commands.

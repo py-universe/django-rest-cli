@@ -15,9 +15,9 @@ class StartApp(Base):
 
     @staticmethod
     def _start( name: str, directory: Optional[str] = None) -> None:
-        what = Startable.APP
-        directive = f'start{what.name.lower()}'
-        template = f'{what.name}_TEMPLATES_DIR'
+        what: Startable = Startable.APP
+        directive: str = f'start{what.name.lower()}'
+        template: str = f'{what.name}_TEMPLATES_DIR'
 
         Base.run_cmd_command(
             directive, name, directory, template

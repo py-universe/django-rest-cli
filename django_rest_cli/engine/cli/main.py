@@ -1,9 +1,9 @@
-import argparse
+from argparse import ArgumentParser
 from .cli_commands import CliCommands
 
 
-def main():
-    parser = argparse.ArgumentParser(prog="drf-cli")
+def mainp():
+    parser: ArgumentParser = ArgumentParser(prog="drf-cli")
     subparsers = parser.add_subparsers()
 
     # Start project command parser

@@ -10,14 +10,16 @@ from django_rest_cli.engine import rename_file
 class StartProject(ProjectConfigMixin, Base):
 
     @staticmethod
-    def _follow_up_start_project(name: str, directory: Optional[str] = None):
+    def _follow_up_start_project(
+        name: str, directory: Optional[str] = None
+    ) -> None:
         if directory is None:
-            manage_dir = pathlib.Path('.') / name
+            manage_dir: pathlib.Path = pathlib.Path('.') / name
         else:
-            manage_dir = pathlib.Path(directory)
+            manage_dir: pathlib.Path = pathlib.Path(directory)
 
         manage_dir.resolve(strict=True)
-        name_change_map = {
+        name_change_map: dict = {
             'secrets.py': '.env',
             'gitignore.py': '.gitignore',
             'requirements.py': 'requirements.txt',
@@ -34,9 +36,9 @@ class StartProject(ProjectConfigMixin, Base):
         directory: Optional[str] = None, 
         presets: Optional[dict] = None, 
     ) -> None:
-        what = Startable.PROJECT
-        directive = f'start{what.name.lower()}'
-        template = None
+        what: Startable = Startable.PROJECT
+        directive: str = f'start{what.name.lower()}'
+        template: str = None
 
         if starttype.name.lower() == 'template':
             template = ""

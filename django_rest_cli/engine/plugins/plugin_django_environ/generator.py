@@ -18,5 +18,5 @@ class DjangoEnviron(BasePlugin):
 
     @classmethod
     def generator(cls):
-        path = pathlib.Path('.') / '.env'
+        path: pathlib.Path = pathlib.Path('.') / '.env'
         path.touch(mode=438, exist_ok=False)
