@@ -11,19 +11,6 @@ from .validator import is_django_project_directory
 class StartApp(Base):
 
     @staticmethod
-    def __update_installed_apps(apps: List) -> None:
-        # TODO: how to update the installed apps from this module
-        cwd: Path = Path.cwd()
-        file: Path = cwd / cwd.name / 'settings.py'
-        print(f"file: {file}")
-        installed_apps: list = getattr(settings, 'INSTALLED_APPS')
-
-        with open(file, "r") as f:
-            for line in f.readlines():
-                print(f"{line}\n")
-
-
-    @staticmethod
     async def __start( name: str, directory: Optional[str] = None) -> None:
         what: Startable = Startable.APP
         directive: str = f'start{what.name.lower()}'
