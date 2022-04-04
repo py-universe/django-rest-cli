@@ -10,7 +10,7 @@ from django_rest_cli.engine import rename_file
 class StartProject(ProjectConfigMixin, Base):
 
     @staticmethod
-    def _follow_up_start_project(
+    def __follow_up_start_project(
         name: str, directory: Optional[str] = None
     ) -> None:
         if directory is None:
@@ -48,6 +48,7 @@ class StartProject(ProjectConfigMixin, Base):
         await Base.run_cmd_command(
             directive, name, directory, template
         )
+        cls.__follow_up_start_project(name)
 
         if presets:
             pass
