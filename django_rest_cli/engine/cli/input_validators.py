@@ -1,6 +1,9 @@
 from importlib import import_module
 
-from django_rest_cli.engine import print_error_message
+from django_rest_cli.engine import (
+    raise_error_message
+)
+from django_rest_cli.engine.exceptions import ProjectAppNameError
 
 
 def validate_name(name: str, name_or_dir: str='name') -> None:
@@ -8,7 +11,7 @@ def validate_name(name: str, name_or_dir: str='name') -> None:
         if not name.isidentifier():
             error_text: str = "Invalid project name. Check that the project name is a " \
                 "valid Python Identifier"
-            print_error_message(error_text)
+            raise_error_message(error_text, ProjectAppNameError)
 
         # Check it cannot be imported.
         try:
@@ -19,4 +22,4 @@ def validate_name(name: str, name_or_dir: str='name') -> None:
             error_text: str =  f"'{name}' conflicts with the name of an existing Python " \
                 "module and cannot be used. Please try " \
                 "another name."
-            print_error_message(error_text)
+            raise_error_message(error_text, ProjectAppNameError)

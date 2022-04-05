@@ -1,4 +1,4 @@
-from django_rest_cli.engine import print_error_message
+from django_rest_cli.engine import raise_error_message
 from .plugin_django_environ.generator import DjangoEnviron
 
 
@@ -23,4 +23,4 @@ def plugin_trigger(plugin_name: str) -> None:
         error_text: str =  f"'{plugin_name}'currently not supported :( " \
                 "Make sure it's spelt correctly though "
 
-        print_error_message(error_text)
+        raise_error_message(error_text)

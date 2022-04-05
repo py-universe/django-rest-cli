@@ -33,6 +33,6 @@ class Base(object):
 
         try:
             subprocess.run(cmd, check=True)
-            print(f"{name} successfully created\n")
-        except subprocess.CalledProcessError:
+            print(f"{name} successfully created\n\n")
+        except subprocess.CalledProcessError as e:
             pass
