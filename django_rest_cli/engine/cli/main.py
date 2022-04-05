@@ -30,22 +30,10 @@ async def main():
     )
     startproject_apps.set_defaults(func=CliCommands.start_apps)
 
-    # Add plugins command parser
-    add_project_plugins = subparsers.add_parser(
-        'add'
-    ) 
-    add_project_plugins.add_argument(
-        "plugins", 
-        nargs='*' , # Accept multiple plugin names
-        help="name(s) of plugin(s) to be added to project'",
-    )
-    add_project_plugins.set_defaults(func=CliCommands.add_plugins)
-
     args = parser.parse_args()
     # Await asynchronous functions
     if (
         args.func.__name__ == "start_apps"
-        or args.func.__name__ == "add_plugins"
         or args.func.__name__ == "start_project"
     ):
         await args.func(args)  # Invoke whatever function was selected async

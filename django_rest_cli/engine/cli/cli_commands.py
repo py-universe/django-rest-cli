@@ -1,9 +1,6 @@
-import sys
-
 from django_rest_cli.engine.commands import (
     StartApp,
-    StartProject,
-    AddPlugin
+    StartProject
 )
 from .mixins import ProjectConfigMixin
 from .input_validators import validate_name
@@ -11,10 +8,6 @@ from django_rest_cli.engine import print_exception
 
 
 class CliCommands(ProjectConfigMixin):
-
-    @staticmethod
-    async def add_plugins(args) -> None:
-        await AddPlugin.add_plugins(args.plugins)
 
     @staticmethod
     async def start_apps(args) -> None:
