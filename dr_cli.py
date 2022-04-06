@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     import platform
     if platform.system() == "Windows": # Had issues with getting it to work on Windows
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+        asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
     asyncio.run(main())
 
     interval: time = time.perf_counter() - start

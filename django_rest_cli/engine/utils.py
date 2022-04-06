@@ -11,5 +11,10 @@ def rename_file(old_name: str, new_name: str, base_dir: pathlib.Path):
 
 def print_exception(exception: Exception):
     print("\n" + str(exception) + "\n")
-    sys.exit()
+    # sys.exit()
+
+
+def print_success_message(message: str):
+    print("\n" + message + "\n")
+
 

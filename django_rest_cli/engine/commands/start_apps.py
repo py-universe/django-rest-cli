@@ -1,7 +1,4 @@
-from django.conf import settings
-
 from typing import Optional, List
-from pathlib import Path
 import asyncio
 
 from .base import Base, Startable

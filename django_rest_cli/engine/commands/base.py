@@ -1,8 +1,12 @@
 import enum
-import subprocess
+import asyncio
 from typing import List
 
 from django_rest_cli.engine import paths
+from django_rest_cli.engine.exceptions import CommandError
+from django_rest_cli.engine import (
+    print_exception, print_success_message
+)
 
 
 @enum.unique
@@ -32,7 +36,18 @@ class Base(object):
         cmd.extend(['--template', str(getattr(paths, template))])
 
         try:
-            subprocess.run(cmd, check=True)
-            print(f"{name} successfully created\n\n")
-        except subprocess.CalledProcessError as e:
-            pass
+            cmd = " ".join(cmd)
+            proc = await asyncio.create_subprocess_shell(
+                    cmd,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE
+            )
+            stdout, stderr = await proc.communicate()
+            
+            if stderr:
+                raise CommandError(stderr.strip())
+            else:
+                print_success_message(f"{name} successfully created\n\n")
+
+        except CommandError as e:
+            print_exception(e)
