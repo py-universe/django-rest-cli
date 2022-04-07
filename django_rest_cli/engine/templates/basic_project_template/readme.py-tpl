@@ -1,0 +1,8 @@
+<h1>
+	{{ project_name }} REST API.
+</h1>
+
+## What is this about?
+Packages used:
+- python-decouple: for managing environment varibales [See Package Docs Here](https://pypi.org/project/python-decouple/). 
+- drf-spactacular: for auto-generating APi docs [See Package Docs Here](https://drf-spectacular.readthedocs.io/en/latest/readme.html). 

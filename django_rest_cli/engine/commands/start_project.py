@@ -18,6 +18,7 @@ class StartProject(ProjectConfigMixin, Base):
         manage_dir.resolve(strict=True)
         name_change_map: dict = {
             "secrets.py": ".env",
+            "readme.py": "readme.md",
         }
 
         for (old_name, new_name) in name_change_map.items():
