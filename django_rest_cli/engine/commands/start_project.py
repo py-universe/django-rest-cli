@@ -1,30 +1,50 @@
-import pathlib
-import sys
 from typing import Optional
+import pathlib
 
-from .base import start, Startable
+from .base import Base, Startable
+from django_rest_cli.engine.cli import ProjectConfigMixin
 
-def start_project(name: str, directory: Optional[str] = None):
-    start(Startable.PROJECT, name, directory)
-    # follow_up_start_project(name, directory)
-
-
-def follow_up_start_project(name: str, directory: Optional[str] = None):
-    if directory is None:
-        manage_dir = pathlib.Path('.') / name
-    else:
-        manage_dir = pathlib.Path(directory)
-
-    manage_dir.resolve(strict=True)
-    name_change_map = {
-        'secrets.py': '.env',
-        'gitignore.py': '.gitignore',
-        'requirements.py': 'requirements.txt',
-    }
-
-    for (old_name, new_name) in name_change_map.items():
-        rename_file(old_name, new_name, base_dir=manage_dir)
+from django_rest_cli.engine import rename_file
 
 
-def rename_file(old_name: str, new_name: str, base_dir: pathlib.Path):
-    (base_dir / old_name).rename(base_dir / new_name)
+class StartProject(ProjectConfigMixin, Base):
+    @staticmethod
+    def __follow_up_start_project(name: str, directory: Optional[str] = None) -> None:
+        if directory is None:
+            manage_dir: pathlib.Path = pathlib.Path(".") / name
+        else:
+            manage_dir: pathlib.Path = pathlib.Path(directory)
+
+        manage_dir.resolve(strict=True)
+        name_change_map: dict = {
+            "secrets.py": ".env",
+            "gitignore.py": ".gitignore",
+            "requirements.py": "requirements.txt",
+        }
+
+        for (old_name, new_name) in name_change_map.items():
+            rename_file(old_name, new_name, base_dir=manage_dir)
+
+    @classmethod
+    async def __start(
+        cls,
+        name: str,
+        template_type: str,
+        directory: Optional[str] = None,
+    ) -> None:
+        what: Startable = Startable.PROJECT
+        directive: str = f"start{what.name.lower()}"
+        template: str = f"{what.name}_TEMPLATE_URL_{template_type.upper()}"
+
+        await Base.run_cmd_command(directive, name, directory, template)
+        cls.__follow_up_start_project(name)
+
+    @classmethod
+    async def start_project(
+        cls,
+        project_name: str,
+        template_type: str,
+        directory: Optional[str] = None,
+    ) -> None:
+
+        await cls.__start(project_name, template_type, directory)

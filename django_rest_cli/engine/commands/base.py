@@ -1,29 +1,42 @@
 import enum
-import subprocess
-import sys
-from typing import Optional, List
+import asyncio
+from typing import List
 
 from django_rest_cli.engine import paths
+from django_rest_cli.engine.exceptions import CommandError
+from django_rest_cli.engine import print_exception, print_success_message
 
 
 @enum.unique
 class Startable(enum.Enum):
-    PROJECT = 0
-    APP = 1
+    PROJECT: int = 0
+    APP: int = 1
 
 
-def start(what: Startable, name: str, directory: Optional[str] = None):
-    directive = f'start{what.name.lower()}'
-    cmd: List[str]
-    cmd = ['django-admin', directive, name]
+class Base(object):
+    @staticmethod
+    async def run_cmd_command(
+        directive: str, name: str, directory: str, template: str
+    ) -> None:
+        cmd: List[str]
+        cmd = ["django-admin", directive, name]
 
-    if directory is not None:
-        cmd.append(directory)
+        if directory is not None:
+            cmd.append(directory)
 
-    templates_dir_name = f'{what.name}_TEMPLATES_DIR'
-    cmd.extend(['--template', str(getattr(paths, templates_dir_name))])
+        cmd.extend(["--template", str(getattr(paths, template))])
 
-    try:
-        subprocess.run(cmd, check=True)
-    except subprocess.CalledProcessError:
-        sys.exit(1)
+        try:
+            cmd = " ".join(cmd)
+            proc = await asyncio.create_subprocess_shell(
+                cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+            )
+            stdout, stderr = await proc.communicate()
+
+            if stderr:
+                raise CommandError(stderr.strip())
+            else:
+                print_success_message(f"{name} successfully created\n\n")
+
+        except CommandError as e:
+            print_exception(e)
