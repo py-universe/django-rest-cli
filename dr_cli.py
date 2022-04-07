@@ -3,11 +3,12 @@ import time
 from django_rest_cli.engine import main
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     start: time = time.perf_counter()
 
     import platform
-    if platform.system() == "Windows": # Had issues with getting it to work on Windows
+
+    if platform.system() == "Windows":  # Had issues with getting it to work on Windows
         asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
     asyncio.run(main())
 
