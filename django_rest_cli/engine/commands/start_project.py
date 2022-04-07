@@ -18,8 +18,6 @@ class StartProject(ProjectConfigMixin, Base):
         manage_dir.resolve(strict=True)
         name_change_map: dict = {
             "secrets.py": ".env",
-            "gitignore.py": ".gitignore",
-            "requirements.py": "requirements.txt",
         }
 
         for (old_name, new_name) in name_change_map.items():
