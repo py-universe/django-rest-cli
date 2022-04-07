@@ -6,8 +6,6 @@ TEMPLATES_DIR: pathlib.Path = (
 )
 APP_TEMPLATES_DIR: pathlib.Path = TEMPLATES_DIR / "app_template"
 
-PROJECT_TEMPLATE_URL_BASIC: str = (
-    "https://github.com/Django-Rest-CLI/basic-template/zipball/master"
-)
+PROJECT_TEMPLATE_URL_BASIC: pathlib.Path = TEMPLATES_DIR / "project_template_basic"
 PROJECT_TEMPLATE_URL_MEDIOR: str = ""
 PROJECT_TEMPLATE_URL_ADVANCED: str = ""

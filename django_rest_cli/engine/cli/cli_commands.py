@@ -23,4 +23,3 @@ class CliCommands(ProjectConfigMixin):
 
         except Exception as e:
             print_exception(e)
-            sys.exit(1)
