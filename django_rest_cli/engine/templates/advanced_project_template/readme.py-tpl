@@ -4,11 +4,11 @@
 
 
 ## What is this about?
-This project was generated using the MEDIOR template of the drf-cli
+This project was generated using the ADVANCED template of the drf-cli
 
 
 ## This project comes bundled with:
-- Initialized with .git
+- git initialized
 
 - python-decouple: for managing environment varibales 
 [See Package Docs Here](https://pypi.org/project/python-decouple/). 
@@ -22,17 +22,19 @@ This project was generated using the MEDIOR template of the drf-cli
 - pre-commit, black, isort, flake8: for code linting with pre-commit hooks 
 [See this tutorial for more on working with pre-commit hooks in Python](https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/)
 
+- pytest-django: for writing unit tests with pytest 
+[See Package Docs Here](https://pytest-django.readthedocs.io/en/latest/). 
+
+- Docker for containerization. We are using docker to setup the postgres db for this project as well.
+[check out this tutorial for guide on how to work with docker, and postgres in Django](
+	https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial
+)
 
 ## Running the Project
 - Presumably you already have a virtual env for this project. Create one if you don't.
-
-- Run `pip install -r requirements.txt` in your project directory.
-
-- Run `pip install -r requirements-dev.txt` in your project directory.
-
+- Run `pip install pre-commit` in your project directory.
 - Run `pre-commit install` to install git hooks in your `.git` directory
-
-- `python manage.py runserver` to start your development server
+- Run `docker-compose up --build` to build your docker image and start your docker container.
 
 
 ## Quick note on pre-commit hooks

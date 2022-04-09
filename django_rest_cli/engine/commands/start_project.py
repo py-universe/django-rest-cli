@@ -21,7 +21,8 @@ class StartProject(ProjectConfigMixin, Base):
         name_change_map: dict = {
             "secrets.py": ".env",
             "readme.py": "readme.md",
-            "setup.py": "setup.cfg"
+            "setup.py": "setup.cfg",
+            "compose.py": "docker-compose.yaml"
         }
 
         try:

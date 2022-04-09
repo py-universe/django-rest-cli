@@ -1,3 +1,9 @@
+[tool:pytest]
+DJANGO_SETTINGS_MODULE = {{ project_name}}.settings
+testpaths =
+    tests
+
+
 [tool.black]
 line-length = 89
 skip-string-normalization = true

@@ -1,4 +1,3 @@
-import asyncio
 from argparse import ArgumentParser
 
 from .cli_commands import CliCommands

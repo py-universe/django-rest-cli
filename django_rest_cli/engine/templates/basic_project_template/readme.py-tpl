@@ -3,7 +3,7 @@
 </h1>
 
 ## What is this about?
-This project was generated using the basic template of the drf-cli
+This project was generated using the BASIC template of the drf-cli
 
 ## Packages used:
 - python-decouple: for managing environment varibales [See Package Docs Here](https://pypi.org/project/python-decouple/). 
