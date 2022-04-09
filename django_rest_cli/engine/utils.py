@@ -1,15 +1,13 @@
 import pathlib
 from termcolor import cprint
 import colorama
+import subprocess
+from typing import List
 
 
 def raise_error_message(error_text: str, exception: Exception):
     raise exception(error_text)
     
-
-def rename_file(old_name: str, new_name: str, base_dir: pathlib.Path):
-    (base_dir / old_name).rename(base_dir / new_name)
-
 
 def print_exception(exception: Exception):
     text = "\n⚠️" + str(exception) + "\n"
@@ -21,3 +19,14 @@ def print_success_message(message: str):
     text = "\n🎉" + message + "\n"
     colorama.init()
     cprint(text, "green", attrs=["blink", "bold"])
+
+
+def rename_file(old_name: str, new_name: str, base_dir: pathlib.Path):
+    (base_dir / old_name).rename(base_dir / new_name)
+
+
+def init_git_repo(project_dir: pathlib.Path):
+    cmd: List[str]
+    cmd = ['git', 'init', project_dir]
+    subprocess.run(cmd, check=True)
+

@@ -1,10 +1,12 @@
 from typing import Optional
 import pathlib
 
+from django_rest_cli.engine.utils import init_git_repo
+
 from .base import Base, Startable
 from django_rest_cli.engine.cli import ProjectConfigMixin
 
-from django_rest_cli.engine import rename_file
+from django_rest_cli.engine import rename_file, init_git_repo
 
 
 class StartProject(ProjectConfigMixin, Base):
@@ -19,10 +21,16 @@ class StartProject(ProjectConfigMixin, Base):
         name_change_map: dict = {
             "secrets.py": ".env",
             "readme.py": "readme.md",
+            "setup.py": "setup.cfg"
         }
 
-        for (old_name, new_name) in name_change_map.items():
-            rename_file(old_name, new_name, base_dir=manage_dir)
+        try:
+            for (old_name, new_name) in name_change_map.items():
+                rename_file(old_name, new_name, base_dir=manage_dir)
+            
+            init_git_repo(manage_dir)
+        except FileNotFoundError:
+            pass
 
     @classmethod
     async def __start(
