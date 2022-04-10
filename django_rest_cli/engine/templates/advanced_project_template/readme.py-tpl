@@ -30,6 +30,11 @@ This project was generated using the ADVANCED template of the drf-cli
 	https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial
 )
 
+- A custom user model defined in a `users` app
+
+- Authentication endpoints defined in an `auth` app with the `dj-rest-auth and all-auth` packages.
+[See Package Docs Here](https://dj-rest-auth.readthedocs.io/en/latest/introduction.html). 
+
 ## Running the Project
 - Presumably you already have a virtual env for this project. Create one if you don't.
 - Run `pip install pre-commit` in your project directory.
