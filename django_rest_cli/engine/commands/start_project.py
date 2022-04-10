@@ -28,10 +28,10 @@ class StartProject(ProjectConfigMixin, Base):
         try:
             for (old_name, new_name) in name_change_map.items():
                 rename_file(old_name, new_name, base_dir=manage_dir)
-            
-            init_git_repo(manage_dir)
         except FileNotFoundError:
             pass
+
+        init_git_repo(manage_dir)
 
     @classmethod
     async def __start(

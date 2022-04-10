@@ -32,6 +32,11 @@ This project was generated using the MEDIOR template of the drf-cli
 
 - Run `pre-commit install` to install git hooks in your `.git` directory
 
+- To see your git hooks in action, make your first git commit. The first time your hooks run,
+it will take a while to execute. It's normal. Subsequent executions won't take that long
+
+- Run `python manage.py migrate` to apply Django's migrations
+
 - `python manage.py runserver` to start your development server
 
 - Point your browser to `http://localhost:8000/api/v1/docs`. You should see the auto-generated 
@@ -43,5 +48,6 @@ With precommit hooks setup in this project, when you try to commit a change,
 your imports are automatically sorted with `isort`, your code formatted with `black`
 and `flake8` is run on your code to catch formatting issues missed by black.
 If isort, black, flake8 do not return errors, your changes will be commited.
-Else you'd be shown the problematic areas of your code and prompted to fix them
-before commiting again.
+Else isort and black would automatically fix the errors they catch. You'd have to manually fix the 
+issues identified by flake8 though. Stage your changes
+before commiting again. Repeat the cycle again if new code formatting issues are found.

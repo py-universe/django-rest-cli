@@ -1,4 +1,4 @@
 pre-commit
-black>=5.10.1
-iosrt>=22.3.0
-flake8>=3.9.2
+black
+isort
+flake8

@@ -62,5 +62,6 @@ With precommit hooks setup in this project, when you try to commit a change,
 your imports are automatically sorted with `isort`, your code formatted with `black`
 and `flake8` is run on your code to catch formatting issues missed by black.
 If isort, black, flake8 do not return errors, your changes will be commited.
-Else you'd be shown the problematic areas of your code. Fix the issues identified, stage your changes
+Else isort and black would automatically fix the errors they catch. You'd have to manually fix the 
+issues identified by flake8 though. Stage your changes
 before commiting again. Repeat the cycle again if new code formatting issues are found.
