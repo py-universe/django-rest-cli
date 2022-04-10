@@ -34,6 +34,9 @@ This project was generated using the MEDIOR template of the drf-cli
 
 - `python manage.py runserver` to start your development server
 
+- Point your browser to `http://localhost:8000/api/v1/docs`. You should see the auto-generated 
+docs on that page
+
 
 ## Quick note on pre-commit hooks
 With precommit hooks setup in this project, when you try to commit a change, 
