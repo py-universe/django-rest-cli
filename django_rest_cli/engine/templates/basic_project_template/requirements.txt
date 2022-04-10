@@ -1,0 +1,4 @@
+Django>=2.2
+djangorestframework>=3.13.1
+python-decouple>=3.6
+drf_spectacular

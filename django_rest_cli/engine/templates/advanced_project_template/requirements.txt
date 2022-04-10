@@ -1,0 +1,10 @@
+Django>=2.2
+djangorestframework>=3.13.1
+python-decouple>=3.6
+dj-database-url>=0.5.0
+pytest-django>=4.5.2
+dj-rest-auth
+djangorestframework-simplejwt==4.7.1
+django-allauth>=0.24.1
+drf_spectacular
+psycopg2-binary

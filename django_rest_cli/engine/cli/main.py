@@ -1,4 +1,3 @@
-import asyncio
 from argparse import ArgumentParser
 
 from .cli_commands import CliCommands
@@ -23,7 +22,7 @@ async def main():
         help="name(s) of app(s) to be created'",
     )
     startproject_apps.set_defaults(func=CliCommands.start_apps)
-
+    
     args = parser.parse_args()
     # Await asynchronous functions
     if args.func.__name__ == "start_apps" or args.func.__name__ == "start_project":
