@@ -7,7 +7,7 @@ from typing import List
 
 def raise_error_message(error_text: str, exception: Exception):
     raise exception(error_text)
-    
+
 
 def print_exception(exception: Exception):
     text = "\n⚠️" + str(exception) + "\n"
@@ -27,6 +27,5 @@ def rename_file(old_name: str, new_name: str, base_dir: pathlib.Path):
 
 def init_git_repo(project_dir: pathlib.Path):
     cmd: List[str]
-    cmd = ['git', 'init', project_dir]
+    cmd = ["git", "init", project_dir]
     subprocess.run(cmd, check=True)
-

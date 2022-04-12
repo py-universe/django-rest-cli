@@ -22,7 +22,7 @@ class StartProject(ProjectConfigMixin, Base):
             "secrets.py": ".env",
             "readme.py": "readme.md",
             "setup.py": "setup.cfg",
-            "compose.py": "docker-compose.yaml"
+            "compose.py": "docker-compose.yaml",
         }
 
         try:

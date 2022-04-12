@@ -1,6 +1,4 @@
-import sys
-
-from django_rest_cli.engine.commands import StartApp, StartProject
+from django_rest_cli.engine.commands import StartApp, StartProject, AddCrud
 from .mixins import ProjectConfigMixin
 from .input_validators import validate_name
 from django_rest_cli.engine import print_exception
@@ -23,3 +21,7 @@ class CliCommands(ProjectConfigMixin):
 
         except Exception as e:
             print_exception(e)
+
+    @staticmethod
+    async def add_crud(args) -> None:
+        await AddCrud.addcrud_for_multiple_apps(args.apps)
