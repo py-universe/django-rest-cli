@@ -7,7 +7,7 @@ import django
 
 from django_rest_cli.engine import print_exception
 from django_rest_cli.engine.exceptions import NoModelsFoundError
-from django_rest_cli.engine.templates import serializers_template
+from django_rest_cli.engine.templates import serializers_template, view_template
 from django_rest_cli.engine import file_api
 
 
@@ -38,8 +38,29 @@ class AddCrud:
         file_api.wrap_file_content(serializer_file, head, body)
     
     @staticmethod
-    def __generate_views():
-        pass
+    def __generate_views(app_name: str, model_name: str) -> None:
+        viewset_template = view_template.VIEWSET % {"model": model_name}
+    
+        model_import_template = view_template.MODEL_IMPORT % {
+            "app": app_name,
+            "model": model_name,
+        }
+        serializer_import_template = view_template.SERIALIZER_IMPORT % {
+            "app": app_name,
+            "model": model_name,
+        }
+        imports = model_import_template + serializer_import_template
+
+        view_file: Path = Path.cwd() / f"{app_name}" / "views.py"
+        view_head = f"class {model_name}ViewSet"
+
+        if not Path.exists(view_file):
+            file_api.create_file(view_file, view_template.SETUP)
+
+        if file_api.is_present_in_file(view_file, view_head):
+            return
+        head, body = imports, viewset_template
+        file_api.wrap_file_content(view_file, head, body)
 
     @staticmethod
     def __generate_url_patterns():
@@ -63,6 +84,7 @@ class AddCrud:
                     )
                 for model in app_models:
                     cls.__generate_serializers(app_label, model)
+                    cls.__generate_views(app_label, model)
 
         except LookupError as e:
             print_exception(e)
