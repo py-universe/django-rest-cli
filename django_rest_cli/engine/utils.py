@@ -2,6 +2,7 @@ import pathlib
 from termcolor import cprint
 import colorama
 import subprocess
+import inflect
 from typing import List
 
 
@@ -29,3 +30,11 @@ def init_git_repo(project_dir: pathlib.Path):
     cmd: List[str]
     cmd = ["git", "init", project_dir]
     subprocess.run(cmd, check=True)
+
+
+def pluralize(string):
+    """
+    pluralizes a string word using a python library, needed for verbose model names and url paths
+    """
+    pluralizer = inflect.engine()
+    return pluralizer.plural(string)

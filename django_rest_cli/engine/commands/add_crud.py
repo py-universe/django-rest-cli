@@ -5,9 +5,11 @@ from pathlib import Path
 
 import django
 
-from django_rest_cli.engine import print_exception
+from django_rest_cli.engine import print_exception, pluralize
 from django_rest_cli.engine.exceptions import NoModelsFoundError
-from django_rest_cli.engine.templates import serializers_template, view_template
+from django_rest_cli.engine.templates import (
+    serializers_template, view_template, url_template
+)
 from django_rest_cli.engine import file_api
 
 
@@ -63,8 +65,39 @@ class AddCrud:
         file_api.wrap_file_content(view_file, head, body)
 
     @staticmethod
-    def __generate_url_patterns():
-        pass
+    def __generate_url_patterns(app_name: str, model_name: str) -> None:
+        plural_path = pluralize(model_name.lower())
+        template = url_template.URL % {
+            "model": model_name,
+            "path": plural_path,
+        }
+        imports = url_template.VIEWSET_IMPORT % {
+            "app": app_name,
+            "model": model_name,
+        }
+        # return imports, url_template
+        # file = f"{self.api_app_path}/urls.py"
+        # chunk = f"{self.model_name}ViewSet)"
+        # if file_api.is_present_in_file(file, chunk):
+        #     return
+        # head, body = self.get_url_parts()
+        # if file_api.is_present_in_file(file, url_templates.URL_PATTERNS):
+        #     file_api.replace_file_chunk(file, url_templates.URL_PATTERNS, "")
+        # body = body + url_templates.URL_PATTERNS
+        # file_api.wrap_file_content(file, head, body)
+        url_file: Path = Path.cwd() / f"{app_name}" / "urls.py"
+        url_head = f"{model_name}ViewSet"
+
+        if not Path.exists(url_file):
+            file_api.create_file(url_file, url_template.SETUP)
+
+        if file_api.is_present_in_file(url_file, url_head):
+            return
+        head, body = imports, template
+        if file_api.is_present_in_file(url_file, url_template.URL_PATTERNS):
+            file_api.replace_file_chunk(url_file, url_template.URL_PATTERNS, "")
+        body = body + url_template.URL_PATTERNS
+        file_api.wrap_file_content(url_file, head, body)
 
     @classmethod
     async def __add(cls, app_label: str) -> None:
@@ -85,6 +118,7 @@ class AddCrud:
                 for model in app_models:
                     cls.__generate_serializers(app_label, model)
                     cls.__generate_views(app_label, model)
+                    cls.__generate_url_patterns(app_label, model)
 
         except LookupError as e:
             print_exception(e)

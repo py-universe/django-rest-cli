@@ -5,6 +5,7 @@ from django_rest_cli.engine.utils import (
     print_exception,
     print_success_message,
     init_git_repo,
+    pluralize
 )
 from django_rest_cli.engine.cli.input_validators import validate_name
 from django_rest_cli.engine.exceptions import (
