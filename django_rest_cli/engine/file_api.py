@@ -4,12 +4,13 @@ A file api created only for file operations extracted from Generator
 from os import path
 
 
-def create_file(file_path):
+def create_file(file_path, content=None):
     """
-    creates a file
+        creates a file
     """
-    with open(file_path, "x", encoding="utf8"):
-        pass
+    with open(file_path, "w+", encoding="utf8") as file:
+        if content is not None:
+            file.write(content)
 
 
 def wipe_file_content(file_path):
@@ -87,12 +88,3 @@ def wipe_files(file_paths):
     """
     for file in file_paths:
         wipe_file_content(file)
-
-
-def create_files(file_paths):
-    """
-    creates files
-    """
-    for file in file_paths:
-        if not path.isfile(file):
-            create_file(file)

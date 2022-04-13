@@ -20,7 +20,7 @@ class AddCrud:
         template = serializers_template.SERIALIZER % {
             "model": model_name
         }
-        imports = serializers_template.IMPORTS % {
+        imports = serializers_template.MODEL_IMPORT % {
             "app": app_name,
             "model": model_name,
         }
@@ -30,7 +30,7 @@ class AddCrud:
 
         # If serializers.py file does not exist in app folder, create one
         if not Path.exists(serializer_file):
-            file_api.create_file(serializer_file)
+            file_api.create_file(serializer_file, serializers_template.SETUP)
 
         if file_api.is_present_in_file(serializer_file, serializer_head):
             return
