@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # for custom user model
-    "accounts.apps.AccountsConfig",
+    "users",
 ]
 
 

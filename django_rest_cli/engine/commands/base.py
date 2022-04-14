@@ -1,10 +1,10 @@
-import enum
 import asyncio
+import enum
 from typing import List
 
 from django_rest_cli.engine import paths
+from django_rest_cli.engine.utils import print_exception, print_success_message
 from django_rest_cli.engine.exceptions import CommandError
-from django_rest_cli.engine import print_exception, print_success_message
 
 
 @enum.unique

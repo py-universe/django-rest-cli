@@ -4,3 +4,7 @@ class CommandError(Exception):
 
 class ProjectAppNameError(Exception):
     pass
+
+
+class NoModelsFoundError(Exception):
+    pass
