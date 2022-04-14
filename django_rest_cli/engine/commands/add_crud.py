@@ -75,16 +75,7 @@ class AddCrud:
             "app": app_name,
             "model": model_name,
         }
-        # return imports, url_template
-        # file = f"{self.api_app_path}/urls.py"
-        # chunk = f"{self.model_name}ViewSet)"
-        # if file_api.is_present_in_file(file, chunk):
-        #     return
-        # head, body = self.get_url_parts()
-        # if file_api.is_present_in_file(file, url_templates.URL_PATTERNS):
-        #     file_api.replace_file_chunk(file, url_templates.URL_PATTERNS, "")
-        # body = body + url_templates.URL_PATTERNS
-        # file_api.wrap_file_content(file, head, body)
+        
         url_file: Path = Path.cwd() / f"{app_name}" / "urls.py"
         url_head = f"{model_name}ViewSet"
 
@@ -98,6 +89,28 @@ class AddCrud:
             file_api.replace_file_chunk(url_file, url_template.URL_PATTERNS, "")
         body = body + url_template.URL_PATTERNS
         file_api.wrap_file_content(url_file, head, body)
+
+    @staticmethod
+    async def __sort_app_imports(app_label: str):
+        cmd: List[str]
+        cmd = ["isort", app_label]
+
+        cmd = " ".join(cmd)
+        proc = await asyncio.create_subprocess_shell(
+            cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+        )
+        stdout, stderr = await proc.communicate()
+
+    @staticmethod
+    async def __lint_app_code(app_label: str):
+        cmd: List[str]
+        cmd = ["black", app_label]
+
+        cmd = " ".join(cmd)
+        proc = await asyncio.create_subprocess_shell(
+            cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+        )
+        stdout, stderr = await proc.communicate()
 
     @classmethod
     async def __add(cls, app_label: str) -> None:
@@ -119,6 +132,9 @@ class AddCrud:
                     cls.__generate_serializers(app_label, model)
                     cls.__generate_views(app_label, model)
                     cls.__generate_url_patterns(app_label, model)
+                
+                await cls.__sort_app_imports(app_label)
+                await cls.__lint_app_code(app_label)
 
         except LookupError as e:
             print_exception(e)
