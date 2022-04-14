@@ -6,7 +6,7 @@ from os import path
 
 def create_file(file_path, content=None):
     """
-        creates a file
+    creates a file
     """
     with open(file_path, "w+", encoding="utf8") as file:
         if content is not None:

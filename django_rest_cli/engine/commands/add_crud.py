@@ -1,48 +1,63 @@
-import os
 import asyncio
-from typing import List
+import os
 from pathlib import Path
+from typing import List
 
 import django
 
-from django_rest_cli.engine import print_exception, pluralize
-from django_rest_cli.engine.exceptions import NoModelsFoundError
-from django_rest_cli.engine.templates import (
-    serializers_template, view_template, url_template
-)
 from django_rest_cli.engine import file_api
+from django_rest_cli.engine.utils import pluralize, print_exception
+from django_rest_cli.engine.exceptions import NoModelsFoundError
+from django_rest_cli.engine.templates import (serializers_template,
+                                              url_template, view_template)
 
 
-class AddCrud:
-    @staticmethod
-    def __generate_serializers(app_name: str, model_name: str) -> None:
-        # Build path to app's models.py file for model import
-        # app_path: str = Path.cwd().name+ "." +app_name
-        
-        template = serializers_template.SERIALIZER % {
-            "model": model_name
-        }
+class BaseGenerator:
+    @classmethod
+    def _generate_file(cls, file: Path, head: str, imports: str, body: str, setup: str):
+        # If file does not exist in app folder, create one
+        if not Path.exists(file):
+            file_api.create_file(file, setup)
+
+        if file_api.is_present_in_file(file, head):
+            return
+        file_api.wrap_file_content(file, imports, body)
+
+
+class SerializerGenerator(BaseGenerator):
+    @classmethod
+    def _generate_serializers(cls, app_name: str, model_name: str) -> None:
+        template = serializers_template.SERIALIZER % {"model": model_name}
         imports = serializers_template.MODEL_IMPORT % {
             "app": app_name,
             "model": model_name,
         }
-       
+
         serializer_file: Path = Path.cwd() / f"{app_name}" / "serializers.py"
         serializer_head = f"class {model_name}Serializer"
 
-        # If serializers.py file does not exist in app folder, create one
-        if not Path.exists(serializer_file):
-            file_api.create_file(serializer_file, serializers_template.SETUP)
+        cls._generate_file(
+            serializer_file,
+            serializer_head,
+            imports,
+            template,
+            serializers_template.SETUP,
+        )
+        # # If serializers.py file does not exist in app folder, create one
+        # if not Path.exists(serializer_file):
+        #     file_api.create_file(serializer_file, serializers_template.SETUP)
 
-        if file_api.is_present_in_file(serializer_file, serializer_head):
-            return
-        head, body = imports, template
-        file_api.wrap_file_content(serializer_file, head, body)
-    
-    @staticmethod
-    def __generate_views(app_name: str, model_name: str) -> None:
+        # if file_api.is_present_in_file(serializer_file, serializer_head):
+        #     return
+        # head, body = imports, template
+        # file_api.wrap_file_content(serializer_file, head, body)
+
+
+class ViewGenerator(BaseGenerator):
+    @classmethod
+    def _generate_views(cls, app_name: str, model_name: str) -> None:
         viewset_template = view_template.VIEWSET % {"model": model_name}
-    
+
         model_import_template = view_template.MODEL_IMPORT % {
             "app": app_name,
             "model": model_name,
@@ -56,16 +71,21 @@ class AddCrud:
         view_file: Path = Path.cwd() / f"{app_name}" / "views.py"
         view_head = f"class {model_name}ViewSet"
 
-        if not Path.exists(view_file):
-            file_api.create_file(view_file, view_template.SETUP)
+        cls._generate_file(
+            view_file, view_head, imports, viewset_template, view_template.SETUP
+        )
+        # if not Path.exists(view_file):
+        #     file_api.create_file(view_file, view_template.SETUP)
 
-        if file_api.is_present_in_file(view_file, view_head):
-            return
-        head, body = imports, viewset_template
-        file_api.wrap_file_content(view_file, head, body)
+        # if file_api.is_present_in_file(view_file, view_head):
+        #     return
+        # head, body = imports, viewset_template
+        # file_api.wrap_file_content(view_file, head, body)
 
-    @staticmethod
-    def __generate_url_patterns(app_name: str, model_name: str) -> None:
+
+class UrlsGenerator:
+    @classmethod
+    def _generate_url_patterns(cls, app_name: str, model_name: str) -> None:
         plural_path = pluralize(model_name.lower())
         template = url_template.URL % {
             "model": model_name,
@@ -75,7 +95,7 @@ class AddCrud:
             "app": app_name,
             "model": model_name,
         }
-        
+
         url_file: Path = Path.cwd() / f"{app_name}" / "urls.py"
         url_head = f"{model_name}ViewSet"
 
@@ -90,6 +110,8 @@ class AddCrud:
         body = body + url_template.URL_PATTERNS
         file_api.wrap_file_content(url_file, head, body)
 
+
+class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
     @staticmethod
     async def __sort_app_imports(app_label: str):
         cmd: List[str]
@@ -115,8 +137,8 @@ class AddCrud:
     @classmethod
     async def __add(cls, app_label: str) -> None:
         try:
-            from django.apps import apps as project_apps
             from django.apps import AppConfig
+            from django.apps import apps as project_apps
 
             if project_apps.ready:
                 config: AppConfig = project_apps.get_app_config(app_label)
@@ -129,10 +151,10 @@ class AddCrud:
                         f"No Models Defined in {app_label} App: Make sure to have a models.py file with at least one model class in it."
                     )
                 for model in app_models:
-                    cls.__generate_serializers(app_label, model)
-                    cls.__generate_views(app_label, model)
-                    cls.__generate_url_patterns(app_label, model)
-                
+                    cls._generate_serializers(app_label, model)
+                    cls._generate_views(app_label, model)
+                    cls._generate_url_patterns(app_label, model)
+
                 await cls.__sort_app_imports(app_label)
                 await cls.__lint_app_code(app_label)
 

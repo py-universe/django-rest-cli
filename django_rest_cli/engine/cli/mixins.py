@@ -1,5 +1,5 @@
-from PyInquirer import prompt
 from examples import custom_style_3
+from PyInquirer import prompt
 
 
 class ProjectConfigMixin(object):

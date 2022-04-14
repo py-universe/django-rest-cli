@@ -1,2 +1,2 @@
-from .mixins import ProjectConfigMixin
 from .main import main
+from .mixins import ProjectConfigMixin

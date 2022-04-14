@@ -1,12 +1,10 @@
-from typing import Optional
 import pathlib
+from typing import Optional
 
-from django_rest_cli.engine.utils import init_git_repo
+from django_rest_cli.engine.cli.mixins import ProjectConfigMixin
+from django_rest_cli.engine.utils import init_git_repo, rename_file
 
 from .base import Base, Startable
-from django_rest_cli.engine.cli import ProjectConfigMixin
-
-from django_rest_cli.engine import rename_file, init_git_repo
 
 
 class StartProject(ProjectConfigMixin, Base):

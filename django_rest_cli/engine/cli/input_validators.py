@@ -1,7 +1,7 @@
 from importlib import import_module
 from pathlib import Path
 
-from django_rest_cli.engine import raise_error_message
+from django_rest_cli.engine.utils import raise_error_message
 from django_rest_cli.engine.exceptions import ProjectAppNameError
 
 

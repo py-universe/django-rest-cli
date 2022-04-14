@@ -1,9 +1,10 @@
 import pathlib
-from termcolor import cprint
-import colorama
 import subprocess
-import inflect
 from typing import List
+
+import colorama
+import inflect
+from termcolor import cprint
 
 
 def raise_error_message(error_text: str, exception: Exception):
