@@ -1,8 +1,11 @@
 from importlib import import_module
 from pathlib import Path
 
+from django_rest_cli.engine.exceptions import (
+    NotDjangoProjectDirectory,
+    ProjectAppNameError,
+)
 from django_rest_cli.engine.utils import raise_error_message
-from django_rest_cli.engine.exceptions import ProjectAppNameError
 
 
 def is_django_project_directory():
@@ -13,7 +16,7 @@ def is_django_project_directory():
         error_text: str = (
             "Command Failed. Make sure to execute command in a Django project directory"
         )
-        raise_error_message(error_text)
+        raise_error_message(error_text, NotDjangoProjectDirectory)
 
 
 def validate_name(name: str, name_or_dir: str = "name") -> None:

@@ -8,3 +8,7 @@ class ProjectAppNameError(Exception):
 
 class NoModelsFoundError(Exception):
     pass
+
+
+class NotDjangoProjectDirectory(Exception):
+    pass
