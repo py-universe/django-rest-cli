@@ -8,7 +8,7 @@ from django_rest_cli.engine.exceptions import (
 from django_rest_cli.engine.utils import raise_error_message
 
 
-def is_django_project_directory():
+def is_django_project_directory() -> bool:
     cwd: Path = Path.cwd()
     file: Path = cwd / "manage.py"
 
@@ -17,6 +17,7 @@ def is_django_project_directory():
             "Command Failed. Make sure to execute command in a Django project directory"
         )
         raise_error_message(error_text, NotDjangoProjectDirectory)
+    return True
 
 
 def validate_name(name: str, name_or_dir: str = "name") -> None:

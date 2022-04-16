@@ -25,3 +25,6 @@ class TestInputValidators:
         self, valid_project_name: str
     ) -> None:
         assert validate_name(valid_project_name) is None
+
+    def test_passes_in_django_project_directory(self) -> None:
+        assert is_django_project_directory() is True
