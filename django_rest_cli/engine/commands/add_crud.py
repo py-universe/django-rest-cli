@@ -6,7 +6,9 @@ from typing import List
 import django
 
 from django_rest_cli.engine import file_api
-from django_rest_cli.engine.utils import pluralize, print_exception
+from django_rest_cli.engine.utils import (
+    pluralize, print_exception, print_info_message, print_success_message
+)
 from django_rest_cli.engine.exceptions import NoModelsFoundError
 from django_rest_cli.engine.templates import (serializers_template,
                                               url_template, view_template)
@@ -43,14 +45,6 @@ class SerializerGenerator(BaseGenerator):
             template,
             serializers_template.SETUP,
         )
-        # # If serializers.py file does not exist in app folder, create one
-        # if not Path.exists(serializer_file):
-        #     file_api.create_file(serializer_file, serializers_template.SETUP)
-
-        # if file_api.is_present_in_file(serializer_file, serializer_head):
-        #     return
-        # head, body = imports, template
-        # file_api.wrap_file_content(serializer_file, head, body)
 
 
 class ViewGenerator(BaseGenerator):
@@ -74,13 +68,6 @@ class ViewGenerator(BaseGenerator):
         cls._generate_file(
             view_file, view_head, imports, viewset_template, view_template.SETUP
         )
-        # if not Path.exists(view_file):
-        #     file_api.create_file(view_file, view_template.SETUP)
-
-        # if file_api.is_present_in_file(view_file, view_head):
-        #     return
-        # head, body = imports, viewset_template
-        # file_api.wrap_file_content(view_file, head, body)
 
 
 class UrlsGenerator:
@@ -150,6 +137,10 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
                     raise NoModelsFoundError(
                         f"No Models Defined in {app_label} App: Make sure to have a models.py file with at least one model class in it."
                     )
+                else:
+                    print_info_message(f"Models Found in {app_label} App: {app_models}")
+
+                print_info_message(f"Generating CRUD endpoints for {app_label} App")  
                 for model in app_models:
                     cls._generate_serializers(app_label, model)
                     cls._generate_views(app_label, model)
@@ -157,6 +148,10 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
 
                 await cls.__sort_app_imports(app_label)
                 await cls.__lint_app_code(app_label)
+
+                print_success_message(
+                    f"all CRUD endpoints for the models found in the {app_label} App successfully added!"
+                )
 
         except LookupError as e:
             print_exception(e)
@@ -170,7 +165,7 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
         try:
             # Make the current porject within which this command is executed available
             # To the command
-            project_name: Path = Path.cwd().name
+            project_name: str = Path.cwd().name
             os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"{project_name}.settings")
             django.setup()
         except Exception as e:

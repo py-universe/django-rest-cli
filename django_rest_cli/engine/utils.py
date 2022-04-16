@@ -12,15 +12,21 @@ def raise_error_message(error_text: str, exception: Exception):
 
 
 def print_exception(exception: Exception):
-    text = "\n⚠️" + str(exception) + "\n"
+    text = "\n❌ " + "FAILED: " + str(exception) + "\n"
     colorama.init()
     cprint(text, "red", attrs=["blink", "bold"])
 
 
 def print_success_message(message: str):
-    text = "\n🎉" + message + "\n"
+    text = "\n🎉🚀 " + "SUCCESS: " + message + "\n"
     colorama.init()
     cprint(text, "green", attrs=["blink", "bold"])
+
+
+def print_info_message(message: str):
+    text = "\n💡💡 " + "INFO: " + message + "\n"
+    colorama.init()
+    cprint(text, "yellow", attrs=["blink", "bold"])
 
 
 def rename_file(old_name: str, new_name: str, base_dir: pathlib.Path):

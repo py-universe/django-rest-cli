@@ -25,3 +25,5 @@ TODO:
 
  #### downsides of having the templates local
  - The package will be heavy
+
+ Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
