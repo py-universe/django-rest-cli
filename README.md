@@ -3,17 +3,17 @@
 </h1>
 
 <p>
-    Need a powerful one-liner here. I'll have to think about what value this package adds to
-    the the django community, then craft my one-liner from there.
+   Scaffold your DRF projects faster with auto-generated docs, pre-commit hooks, auto-generated CRUD endpoints for your models and more 🚀
 </p>
 
 # Demo
-
+working on it
 
 # Motivation
+in the works too
 
 # Usage
-
+I never run am yet 
 ### Installation
 
 ### CLI Commands
