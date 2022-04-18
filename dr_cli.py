@@ -1,16 +1,10 @@
-import asyncio
 import time
 
-from django_rest_cli.engine import main
+from django_rest_cli.engine import entry_point
 
 if __name__ == "__main__":
     start: time = time.perf_counter()
-
-    import platform
-
-    if platform.system() == "Windows":  # Had issues with getting it to work on Windows
-        asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
-    asyncio.run(main())
+    entry_point()
 
     interval: time = time.perf_counter() - start
     print(f"Execution Time: {interval}")
@@ -22,4 +16,4 @@ if __name__ == "__main__":
 # We'd specify the entry point in the setup.cfg file like so:
 # [options.entry_points]
 # console_scripts =
-#    dr-cli = drf_project_builder.engine:main
+#    dr-cli = django_rest_cli.engine:entry_point

@@ -6,12 +6,18 @@ from typing import List
 import django
 
 from django_rest_cli.engine import file_api
-from django_rest_cli.engine.utils import (
-    pluralize, print_exception, print_info_message, print_success_message
-)
 from django_rest_cli.engine.exceptions import NoModelsFoundError
-from django_rest_cli.engine.templates import (serializers_template,
-                                              url_template, view_template)
+from django_rest_cli.engine.templates import (
+    serializers_template,
+    url_template,
+    view_template,
+)
+from django_rest_cli.engine.utils import (
+    pluralize,
+    print_exception,
+    print_info_message,
+    print_success_message,
+)
 
 
 class BaseGenerator:
@@ -135,12 +141,13 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
 
                 if len(app_models) <= 0:
                     raise NoModelsFoundError(
-                        f"No Models Defined in {app_label} App: Make sure to have a models.py file with at least one model class in it."
+                        f"No Models Defined in {app_label} App: Make sure to have"
+                        "a models.py file with at least one model class in it."
                     )
                 else:
                     print_info_message(f"Models Found in {app_label} App: {app_models}")
 
-                print_info_message(f"Generating CRUD endpoints for {app_label} App")  
+                print_info_message(f"Generating CRUD endpoints for {app_label} App")
                 for model in app_models:
                     cls._generate_serializers(app_label, model)
                     cls._generate_views(app_label, model)
@@ -150,7 +157,8 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
                 await cls.__lint_app_code(app_label)
 
                 print_success_message(
-                    f"all CRUD endpoints for the models found in the {app_label} App successfully added!"
+                    f"all CRUD endpoints for the models found in the {app_label}"
+                    "App successfully added!"
                 )
 
         except LookupError as e:
