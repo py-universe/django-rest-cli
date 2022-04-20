@@ -50,7 +50,7 @@ I've been creating REST APIs with the Django framework for sometime now. I notic
 - **PROBLEM-1:**  I noticed I was repeating one or more of the following integrations, and features in every project I create:
   - A custom user model defined in a `users` app
   - Authentication endpoints.
-    - [python-decouple](https://pypi.org/project/python-decouple/): for managing environment varibales 
+  - [python-decouple](https://pypi.org/project/python-decouple/): for managing environment varibales 
   - [drf-spactacular](https://drf-spectacular.readthedocs.io/en/latest/readme.html): for auto-generating APi docs 
   - [dj-database-url](https://github.com/jazzband/dj-database-url): for connecting to various databases 
   - [pre-commit, black, isort, flake8](https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/): for code linting with pre-commit hooks 
@@ -59,16 +59,16 @@ I've been creating REST APIs with the Django framework for sometime now. I notic
 
   So I wished there was a tool out there that could start my project with the integrations, and features I need configured. I found [cookie-cutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) to be useful, but sometimes it's just too heavy for my use-case. I needed something more flexible, something that could start my projects with few integrations or all the features and integrations above.
 
-- **SOLUTION:** This CLI tool allows you start your project from one of three templates we provide: Basic, Medior, and Advanced templates. Depending on what template you select, you could scaffold your project with just python_decouple for managing sensitive keys. Or you could go with something as complex as adding pytest for unit tests, drf_spectacular for auto-generating docs, authentication endpoints, pre-commit hook for code linting setup in your project, and docker support. Regardless of the template you select, we initialize git, and add a readme to your project.
+  - **SOLUTION:** This CLI tool allows you start your project from one of three templates we provide: Basic, Medior, and Advanced templates. Depending on what template you select, you could scaffold your project with just python_decouple for managing sensitive keys. Or you could go with something as complex as adding pytest for unit tests, drf_spectacular for auto-generating docs, authentication endpoints, pre-commit hook for code linting setup in your project, and docker support. Regardless of the template you select, we initialize git, and add a readme to your project.
 
 
 - **PROBLEM-2:** I noticed most times I needed CRUD endpoints for the models I define. CRUD endpoints are so unchanging that I wish there was tool that could just generate all the CRUD endpoints for the models I define.
 
-- **SOLUTION:** You can define your models and have this tool generate CRUD endpoints for each model defined. For example, if you define a model, **Product** in your `models.py` file, this tool could generate a _GET /products POST /products PUT /products/<product_id>_ etc. endpoints for that model.
+  - **SOLUTION:** You can define your models and have this tool generate CRUD endpoints for each model defined. For example, if you define a model, **Product** in your `models.py` file, this tool could generate a _GET /products POST /products PUT /products/<product_id>_ etc. endpoints for that model.
 
 
 - **PROBLEM-3:** I had always wish there was a way to create multiples apps at once in my Django project
-- **SOLUTION:** This tool allows you create multiple apps at once in this project.
+  - **SOLUTION:** This tool allows you create multiple apps at once in this project.
 
 
 ## Contributing Guide
