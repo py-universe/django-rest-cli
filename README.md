@@ -1,5 +1,5 @@
 <h1 align="center">
-  Django Rest CLI 🚀
+  Django Rest CLI ✨ 🍰 ✨
 </h1>
 
 <p align="center">
@@ -57,7 +57,7 @@ In creating REST APIs with the Django framework, I noticed there were things I w
   - [pytest-django](https://pytest-django.readthedocs.io/en/latest/): for writing unit tests with pytest 
   - [Docker](https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial): for containerization. 
 
-  So I wished there was a tool that could start my project with the integrations, and features I need configured. I found [cookie-cutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) to be useful, but sometimes it's just too heavy for my use-case. I needed something more flexible, something that could start my project with few integrations or all the features and integrations above.
+  So I wished there was a tool that could start my project with the integrations, and features I need configured. I found [cookie-cutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) to be useful, but sometimes it's just too heavy for my use-case. I needed something more flexible, something that could start my project with few integrations or all the features and integrations above. 
 
   - **SOLUTION:** This CLI tool allows you start your project from one of three templates we provide: Basic, Medior, and Advanced templates. Depending on what template you select, you could scaffold your project with just python_decouple for managing sensitive keys. Or you could go with something as complex as adding pytest for unit tests, drf_spectacular for auto-generating docs, authentication endpoints, pre-commit hook for code linting setup in your project, and docker support. Regardless of the template you select, we initialize git, and add a readme to your project.
 
