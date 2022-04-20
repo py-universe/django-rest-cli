@@ -19,9 +19,9 @@
   </a>
 </p>
 
-## What is Django Rest CLI ? (shorten this and move some to the motivation section of the docs)
+## What is Django Rest CLI ?
 It is a CLI tool that seeks to help you build your Django Rest APIs faster.
-It takes care of the commonly repeated aspects of building a REST API with the Django Rest Framework by:
+It abstracts the commonly repeated aspects of building a REST API with the Django Rest Framework by:
 
 - Allowing you start your project from one of three templates we provide. Each template comes with certain packages and features already configured.
 
