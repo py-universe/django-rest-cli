@@ -1,5 +1,5 @@
 <h1 align="center">
-  Django Rest CLI ✨ 🍰 ✨
+  Django Rest CLI ✨
 </h1>
 
 <p align="center">
