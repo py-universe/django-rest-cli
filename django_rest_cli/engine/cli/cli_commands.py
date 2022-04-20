@@ -1,5 +1,5 @@
-from django_rest_cli.engine.utils import print_exception
 from django_rest_cli.engine.commands import AddCrud, StartApp, StartProject
+from django_rest_cli.engine.utils import print_exception
 
 from .input_validators import is_django_project_directory, validate_name
 from .mixins import ProjectConfigMixin

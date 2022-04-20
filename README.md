@@ -11,6 +11,10 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/pre-commit/pre-commit">
+    <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white" alt="pre-commit">
+  </a>
+
   <a href="https://github.com/tiangolo/typer/actions?query=workflow%3ATest" target="_blank">
       <img src="https://github.com/tiangolo/typer/workflows/Test/badge.svg" alt="Test">
   </a>

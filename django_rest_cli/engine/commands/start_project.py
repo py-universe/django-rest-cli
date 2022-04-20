@@ -2,7 +2,11 @@ import pathlib
 from typing import Optional
 
 from django_rest_cli.engine.cli.mixins import ProjectConfigMixin
-from django_rest_cli.engine.utils import init_git_repo, rename_file
+from django_rest_cli.engine.utils import (
+    init_git_repo,
+    install_dependencies,
+    rename_file,
+)
 
 from .base import Base, Startable
 
@@ -30,6 +34,7 @@ class StartProject(ProjectConfigMixin, Base):
             pass
 
         init_git_repo(manage_dir)
+        install_dependencies(manage_dir)
 
     @classmethod
     async def __start(
