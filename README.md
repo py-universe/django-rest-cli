@@ -1,13 +1,17 @@
-<h1>
+<h1 align="center">
   Django Rest CLI 🚀
 </h1>
 
-<p>
-   Scaffold your DRF projects with common python packages configured, auto-generated docs, auto-generated CRUD endpoints, pre-commit hook, and more ... all out of the box⚡🚀</b>
+<p align="center">
+  ![Github-A Build Status](https://github.com//Nyior/django-rest-paystack/actions/workflows/lint_and_test.yml/badge.svg)
+  [![PyPI version](https://badge.fury.io/py/django-rest-paystack.svg)](https://badge.fury.io/py/django-rest-paystack)
+</p>
 
-   <strong> 
-      Focus on the dynamic parts of your DRF project; we will handle the repetitive stuffs.
-    </strong>
+<p align="center">
+   Scaffold your DRF projects with common python packages configured, auto-generated docs, auto-generated CRUD endpoints, pre-commit hook, and more ...⚡🚀
+</p>
+<p align="center">
+  <img src="./assets/logo.png">
 </p>
 
 ## What is Django Rest CLI ?
