@@ -3,15 +3,20 @@
 </h1>
 
 <p align="center">
-  ![Github-A Build Status](https://github.com//Nyior/django-rest-paystack/actions/workflows/lint_and_test.yml/badge.svg)
-  [![PyPI version](https://badge.fury.io/py/django-rest-paystack.svg)](https://badge.fury.io/py/django-rest-paystack)
+  <img src="./assets/logo.png" width="150" height="150">
 </p>
 
 <p align="center">
    Scaffold your DRF projects with common python packages configured, auto-generated docs, auto-generated CRUD endpoints, pre-commit hook, and more ...⚡🚀
 </p>
+
 <p align="center">
-  <img src="./assets/logo.png">
+  <a href="https://github.com/tiangolo/typer/actions?query=workflow%3ATest" target="_blank">
+      <img src="https://github.com/tiangolo/typer/workflows/Test/badge.svg" alt="Test">
+  </a>
+  <a href="https://pypi.org/project/typer" target="_blank">
+      <img src="https://img.shields.io/pypi/v/typer?color=%2334D058&label=pypi%20package" alt="Package version">
+  </a>
 </p>
 
 ## What is Django Rest CLI ?
