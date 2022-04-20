@@ -1,6 +1,6 @@
 black==22.3.0
 colorama==0.4.4
-Django==4.0.1
+Django
 djangorestframework==3.13.1
 inflect==5.5.2
 isort==5.10.1
