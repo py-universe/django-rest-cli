@@ -45,9 +45,9 @@ I never run am yet
 ###### `addcrud app1_name app2_name app3_name`
 
 ## Motivation
-I've been creating REST APIs with the Django framework for sometime now. I noticed there were certain things I was repeating for every project I worked on, and there were things I just wished there was a better way of doing them. While these concerns are numerous, I created this CLI tool as a solution to the three concerns that mattered to me the most. Hopefully, it resonates with you too.
+In creating REST APIs with the Django framework, I noticed there were things I was repeating for every project. And there were things I just wished there was a better way of doing them. I created this CLI tool to address the three concerns that mattered to me the most. Hopefully, it resonates with you too.
 
-- **PROBLEM-1:**  I noticed I was repeating one or more of the following integrations, and features in every project I create:
+- **PROBLEM-1:**  I noticed I was repeating atleast one of the following integrations, and features in every project I create:
   - A custom user model defined in a `users` app
   - Authentication endpoints.
   - [python-decouple](https://pypi.org/project/python-decouple/): for managing environment varibales 
@@ -57,7 +57,7 @@ I've been creating REST APIs with the Django framework for sometime now. I notic
   - [pytest-django](https://pytest-django.readthedocs.io/en/latest/): for writing unit tests with pytest 
   - [Docker](https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial): for containerization. 
 
-  So I wished there was a tool out there that could start my project with the integrations, and features I need configured. I found [cookie-cutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) to be useful, but sometimes it's just too heavy for my use-case. I needed something more flexible, something that could start my projects with few integrations or all the features and integrations above.
+  So I wished there was a tool that could start my project with the integrations, and features I need configured. I found [cookie-cutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) to be useful, but sometimes it's just too heavy for my use-case. I needed something more flexible, something that could start my project with few integrations or all the features and integrations above.
 
   - **SOLUTION:** This CLI tool allows you start your project from one of three templates we provide: Basic, Medior, and Advanced templates. Depending on what template you select, you could scaffold your project with just python_decouple for managing sensitive keys. Or you could go with something as complex as adding pytest for unit tests, drf_spectacular for auto-generating docs, authentication endpoints, pre-commit hook for code linting setup in your project, and docker support. Regardless of the template you select, we initialize git, and add a readme to your project.
 
