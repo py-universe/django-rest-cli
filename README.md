@@ -50,6 +50,7 @@ I highly recommend that you install this in a virtual environment.
 - Run `dr-cli startproject project_name` to start a new DRF project.
   - You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with here.
   - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
+  
 
   <img src="./assets/startproject.PNG">
 
@@ -59,6 +60,7 @@ I highly recommend that you install this in a virtual environment.
 - Run `dr-cli startapps app1_name app2_name app3_name` to create multiple Django apps in your project.
   - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
 
+
   <img src="./assets/createapps.PNG">
 
   **Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
@@ -66,6 +68,7 @@ I highly recommend that you install this in a virtual environment.
 
 - Run `dr-cli addcrud app1_name app2_name app3_name` to create CRUD endpoints for the models defined in the specified apps. 
   - Running the above command would return a nice looking feedback as shown in the image below:
+
 
   <img src="./assets/addcrud.PNG">
 
