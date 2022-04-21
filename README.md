@@ -23,6 +23,7 @@
   </a>
 </p>
 
+
 ## What is Django Rest CLI ?
 A CLI tool for _rapid_ Rest APIs development with the Django Framework.
 It abstracts the repeated aspects of building a REST API with the Django Rest Framework by:
@@ -34,19 +35,42 @@ For example, if you define a model, **Product** in your `models.py` file, this t
 
 - Allowing you create all the apps in your project at once, if you know them before hand.
 
+
 ## Demo
 working on it
 
-## Usage
-I never run am yet 
-### Installation
+## Usage: How to Work with this Tool
 
-### CLI Commands
-###### `startproject project_name`
+#### First Step: Installation
+`pip install django-rest-cli`
 
-###### `startapps app1_name app2_name app3_name`
+I highly recommend that you install this in a virtual environment.
 
-###### `addcrud app1_name app2_name app3_name`
+#### CLI Commands
+- Run `dr-cli startproject project_name` to start a new DRF project.
+  - You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with here.
+  - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
+
+  <img src="./assets/startproject.PNG">
+
+  The generated project comes with a nice Readme containing the steps for running the project
+
+
+- Run `dr-cli startapps app1_name app2_name app3_name` to create multiple Django apps in your project.
+  - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
+
+  <img src="./assets/createapps.PNG">
+
+  **Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
+
+
+- Run `dr-cli addcrud app1_name app2_name app3_name` to create CRUD endpoints for the models defined in the specified apps. 
+  - Running the above command would return a nice looking feedback as shown in the image below:
+
+  <img src="./assets/addcrud.PNG">
+
+**Note** On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
+
 
 ## Motivation
 In creating REST APIs with the Django framework, I noticed there were things I kept repeating for every project. And there were things I just wished there was a better way of doing them. I created this CLI tool to address _the three concerns_ that mattered to me the most. Hopefully, it resonates with you too.
@@ -80,8 +104,7 @@ Coming soon...
 
 
 ## Acknowledgements
-In building this I found the following repositories _really_ helpful.
-In fact I re-used few parts of these repositories in this project:
+In building this I re-used a few parts of these repositories in this project:
 - [django-classy-start](https://github.com/mfonism/django-classy-start)
 - [dr-scaffold](https://github.com/Abdenasser/dr_scaffold)
 
@@ -92,5 +115,3 @@ Just let your developer friends know about this repo :) If you star this repo to
 
 ## Licence
 MIT
-
-**Note** On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
