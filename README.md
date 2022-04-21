@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <img src="./assets/logo.png" width="120" height="120">
+  <img src="https://github.com/py-universe/django-rest-cli/blob/docs/assets/logo.png" width="120" height="120">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ I highly recommend that you install this in a virtual environment.
 
 - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
 
-<img src="./assets/startproject.PNG">
+<img src="https://github.com/py-universe/django-rest-cli/blob/docs/assets/startproject.PNG">
 
 The generated project comes with a nice Readme containing the steps for running the project
 
@@ -63,7 +63,7 @@ The generated project comes with a nice Readme containing the steps for running 
 
 - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
 
-<img src="./assets/createapps.PNG">
+<img src="https://github.com/py-universe/django-rest-cli/blob/docs/assets/createapps.PNG">
 
 **Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
 
@@ -73,7 +73,7 @@ The generated project comes with a nice Readme containing the steps for running 
 
 - Running the above command would return a nice looking feedback as shown in the image below:
 
-<img src="./assets/addcrud.PNG">
+<img src="https://github.com/py-universe/django-rest-cli/blob/docs/assets/addcrud.PNG">
 
 **Note** Make sure to register the `URLs` for each app in the top level `urls.py` file.
 
