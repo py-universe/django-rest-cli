@@ -41,15 +41,15 @@ working on it
 
 ## Usage: How to Work with this Tool
 
-#### STEP-1: Installation
+### Step-1: Installation
 ```pip install django-rest-cli```
 
 I highly recommend that you install this in a virtual environment.
 
-#### STEP-2: Create a New Project
+### Step-2: Create a New Project
 - Run ```dr-cli startproject project_name``` to start a new DRF project.
 
-- You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with here.
+- You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with [here](https://github.com/py-universe/django-rest-cli/blob/docs/templatesInfo.md).
 
 - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
 
@@ -58,7 +58,7 @@ I highly recommend that you install this in a virtual environment.
 The generated project comes with a nice Readme containing the steps for running the project
 
 
-#### STEP-3: Create a New Apps in your Project
+### Step-3: Create a New Apps in your Project
 - Run ```dr-cli startapps app1_name app2_name app3_name``` to create multiple Django apps in your project.
 
 - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
@@ -68,7 +68,7 @@ The generated project comes with a nice Readme containing the steps for running 
 **Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
 
 
-#### STEP-4: Generate CRUD Endpoints for your Apps
+### Step-4: Generate CRUD Endpoints for your Apps
 - Run ```dr-cli addcrud app1_name app2_name app3_name``` to create CRUD endpoints for the models defined in the specified apps. 
 
 - Running the above command would return a nice looking feedback as shown in the image below:
