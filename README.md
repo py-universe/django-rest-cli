@@ -41,38 +41,43 @@ working on it
 
 ## Usage: How to Work with this Tool
 
-#### First Step: Installation
-`pip install django-rest-cli`
+#### STEP-1: Installation
+```pip install django-rest-cli```
 
 I highly recommend that you install this in a virtual environment.
 
-#### CLI Commands
-- Run `dr-cli startproject project_name` to start a new DRF project.
-  - You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with here.
-  - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
-  
+#### STEP-2: Create a New Project
+- Run ```dr-cli startproject project_name``` to start a new DRF project.
 
-  <img src="./assets/startproject.PNG">
+- You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with here.
 
-  The generated project comes with a nice Readme containing the steps for running the project
+- On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
 
+<img src="./assets/startproject.PNG">
 
-- Run `dr-cli startapps app1_name app2_name app3_name` to create multiple Django apps in your project.
-  - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
+The generated project comes with a nice Readme containing the steps for running the project
 
 
-  <img src="./assets/createapps.PNG">
+#### STEP-3: Create a New Apps in your Project
+- Run ```dr-cli startapps app1_name app2_name app3_name``` to create multiple Django apps in your project.
 
-  **Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
+- Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
+
+<img src="./assets/createapps.PNG">
+
+**Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
 
 
-- Run `dr-cli addcrud app1_name app2_name app3_name` to create CRUD endpoints for the models defined in the specified apps. 
-  - Running the above command would return a nice looking feedback as shown in the image below:
+#### STEP-4: Generate CRUD Endpoints for your Apps
+- Run ```dr-cli addcrud app1_name app2_name app3_name``` to create CRUD endpoints for the models defined in the specified apps. 
 
+- Running the above command would return a nice looking feedback as shown in the image below:
 
-  <img src="./assets/addcrud.PNG">
+<img src="./assets/addcrud.PNG">
 
-**Note** On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
+**Note** Make sure to register the `URLs` for each app in the top level `urls.py` file.
+
+On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
 
 
 ## Motivation
