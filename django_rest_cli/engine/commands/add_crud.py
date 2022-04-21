@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import List
 
 import django
-
 from django_rest_cli.engine import file_api
 from django_rest_cli.engine.exceptions import NoModelsFoundError
 from django_rest_cli.engine.templates import (
@@ -171,8 +170,8 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
     @classmethod
     async def addcrud_for_multiple_apps(cls, apps: List) -> None:
         try:
-            # Make the current porject within which this command is executed available
-            # To the command
+            # Make the current django project within which this command is
+            # executed available to the command
             project_name: str = Path.cwd().name
             os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"{project_name}.settings")
             django.setup()

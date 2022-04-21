@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     # Third-party packages
     'rest_framework',
     'drf_spectacular',
+
+    # Developer Apps
+    "users",
 ]
 
 
@@ -40,6 +43,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Custom user model
+AUTH_USER_MODEL = 'users.CustomUser'
 
 ROOT_URLCONF = '{{ project_name }}.urls'
 
