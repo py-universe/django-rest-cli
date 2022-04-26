@@ -15,10 +15,15 @@
     <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white" alt="pre-commit">
   </a>
 
-  <a href="https://github.com/py-universe/django-rest-cli/actions?query=workflow%lint_and_test" target="_blank">
-      <img src="https://github.com/py-universe/django-rest-cli/actions/workflows/lint_and_test.yml" alt="Lint and Test">
+  <a 
+    href="https://github.com/py-universe/django-rest-cli/actions?query=workflow%3ATest" target="_blank"
+  >
+    <img 
+      src="https://github.com/py-universe/django-rest-cli/workflows/Test/badge.svg" 
+      alt="Test"
+    >
   </a>
-  ![Github-A Build Status](https://github.com/py-universe/django-rest-cli/actions/workflows/lint_and_test.yml)
+
   <a href="https://badge.fury.io/py/dr-cli" target="_blank">
     <img src="https://badge.fury.io/py/dr-cli.svg" alt="PyPI version">
   </a>
