@@ -9,7 +9,11 @@ class ProjectConfigMixin(object):
             {
                 "type": "list",
                 "name": "user_option",
-                "message": "What template do you want to start this project with? Refer to docs for details on what each template comes with",
+                "message": (
+                    "What template do you want to start this"
+                    "project with? Refer to docs for details"
+                    "on what each template comes with"
+                ),
                 "choices": ["Basic", "Medior", "Advanced"],
             }
         ]

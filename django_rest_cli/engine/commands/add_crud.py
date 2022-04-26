@@ -1,10 +1,10 @@
 import asyncio
 import os
+import sys
 from pathlib import Path
 from typing import List
 
 import django
-
 from django_rest_cli.engine import file_api
 from django_rest_cli.engine.exceptions import NoModelsFoundError
 from django_rest_cli.engine.templates import (
@@ -171,9 +171,15 @@ class AddCrud(SerializerGenerator, ViewGenerator, UrlsGenerator):
     @classmethod
     async def addcrud_for_multiple_apps(cls, apps: List) -> None:
         try:
-            # Make the current porject within which this command is executed available
-            # To the command
-            project_name: str = Path.cwd().name
+            cwd: Path = Path.cwd()
+
+            # Add user project directory to PYTHONPATH
+            sys.path.append(str(cwd))
+
+            project_name: str = cwd.name
+
+            # Make the current django project within which this command is
+            # executed available to the command
             os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"{project_name}.settings")
             django.setup()
         except Exception as e:
