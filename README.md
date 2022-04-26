@@ -15,8 +15,8 @@
     <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white" alt="pre-commit">
   </a>
 
-  <a href="https://github.com/py-universe/django-rest-cli/actions?query=workflow%3Alint_and_test" target="_blank">
-      <img src="https://github.com/py-universe/django-rest-cli/actions/workflows/lint_and_test.yml" alt="Test">
+  <a href="https://github.com/py-universe/django-rest-cli/actions?query=workflow%lint_and_test" target="_blank">
+      <img src="https://github.com/py-universe/django-rest-cli/actions/workflows/lint_and_test.yml" alt="Lint and Test">
   </a>
 
   <a href="https://badge.fury.io/py/dr-cli" target="_blank">
