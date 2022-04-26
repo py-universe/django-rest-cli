@@ -59,7 +59,7 @@ The generated project comes with a nice Readme containing the steps for running 
 
 
 ### Step-3: Create New Apps in your Project
-- Run ```dr-cli startapps app1_name app2_name app3_name``` to create multiple Django apps in your project.
+- Run ```dr-cli startapps todo me-nu user``` to create multiple Django apps in your project. Where `todo me-nu user` are your app names.
 
 - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
 
@@ -69,7 +69,7 @@ The generated project comes with a nice Readme containing the steps for running 
 
 
 ### Step-4: Generate CRUD Endpoints for your Apps
-- Run ```dr-cli addcrud app1_name app2_name app3_name``` to create CRUD endpoints for the models defined in the specified apps. 
+- Run ```dr-cli addcrud memo user``` to create CRUD endpoints for the models defined in the specified apps. 
 
 - Running the above command would return a nice looking feedback as shown in the image below:
 
@@ -79,8 +79,10 @@ The generated project comes with a nice Readme containing the steps for running 
 
 On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
 
-### Step-4: Accessing the docs page
-- Run `python manage.py runserver` to fire up your local development server, and point your browser to `http://localhost:8000/api/v1/docs` to view the auto-generated docs page.
+### Step-5: Accessing the docs page
+- Run `python manage.py runserver` to fire up your local development server, and point your browser to `http://localhost:8000/api/v1/docs` to view the auto-generated docs page shown in the image below:
+
+<img src="./assets/docs.PNG">
 
 
 ## Motivation

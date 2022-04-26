@@ -48,7 +48,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-ROOT_URLCONF = 'medior.urls'
+ROOT_URLCONF = '{{ project_name }}.urls'
 
 
 TEMPLATES = [
@@ -68,7 +68,7 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'medior.wsgi.application'
+WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 
 # Database
@@ -101,7 +101,7 @@ REST_FRAMEWORK = {
 
 # drf_spectacular config
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'medior Project API',
+    'TITLE': '{{ project_name }}  Project API',
     'VERSION': '1.0.0',
 }
 
