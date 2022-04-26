@@ -18,17 +18,17 @@
   <a href="https://github.com/tiangolo/typer/actions?query=workflow%3ATest" target="_blank">
       <img src="https://github.com/tiangolo/typer/workflows/Test/badge.svg" alt="Test">
   </a>
-  <a href="https://pypi.org/project/typer" target="_blank">
-      <img src="https://img.shields.io/pypi/v/typer?color=%2334D058&label=pypi%20package" alt="Package version">
+
+  <a href="https://badge.fury.io/py/dr-cli" target="_blank">
+    <img src="https://badge.fury.io/py/dr-cli.svg" alt="PyPI version">
   </a>
 </p>
 
 
 ## What is Django Rest CLI ?
-A CLI tool for _rapid_ Rest APIs development with the Django Framework.
-It abstracts the repeated aspects of building a REST API with the Django Rest Framework by:
+A CLI tool for _rapid_ Rest APIs development. It abstracts the repeated aspects of building a REST API with the Django Framework by:
 
-- Allowing you start your project from one of three templates. Each template comes with features you'd most likely be setting up yourself already configured.
+- Allowing you start your project from one of three templates. Each template comes with features you'd most likely be setting up yourself already configured for you.
 
 - Allowing you define your models and have this tool generate CRUD endpoints for each model defined.
 For example, if you define a model, **Product** in your `models.py` file, this tool could generate a _GET /products POST /products PUT /products/<product_id>_ etc. endpoints for that model.
@@ -42,14 +42,14 @@ working on it
 ## Usage: How to Work with this Tool
 
 ### Step-1: Installation
-```pip install django-rest-cli```
+```pip install dr-cli```
 
 I highly recommend that you install this in a virtual environment.
 
 ### Step-2: Create a New Project
 - Run ```dr-cli startproject project_name``` to start a new DRF project.
 
-- You'd be prompted to start your project from one of three templates: Baisc, Medior, and Advanced template. Learn more about what each template comes bundled with [here](https://github.com/py-universe/django-rest-cli/blob/docs/templatesInfo.md).
+- You'd be prompted to start your project from one of three templates: **Baisc, Medior, and Advanced** templates. Learn more about what each template comes bundled with [here](https://github.com/py-universe/django-rest-cli/blob/docs/templatesInfo.md).
 
 - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
 
@@ -58,14 +58,14 @@ I highly recommend that you install this in a virtual environment.
 The generated project comes with a nice Readme containing the steps for running the project
 
 
-### Step-3: Create a New Apps in your Project
+### Step-3: Create New Apps in your Project
 - Run ```dr-cli startapps app1_name app2_name app3_name``` to create multiple Django apps in your project.
 
 - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
 
 <img src="https://github.com/py-universe/django-rest-cli/blob/docs/assets/createapps.PNG">
 
-**Note** Make sure to add your successfully created apps to the list of INSTALLED APPS
+**Note** Make sure to add your created apps to the list of INSTALLED APPS
 
 
 ### Step-4: Generate CRUD Endpoints for your Apps
@@ -79,6 +79,9 @@ The generated project comes with a nice Readme containing the steps for running 
 
 On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
 
+### Step-4: Accessing the docs page
+- Run `python manage.py runserver` to fire up your local development server, and point your browser to `http://localhost:8000/api/v1/docs` to view the auto-generated docs page.
+
 
 ## Motivation
 In creating REST APIs with the Django framework, I noticed there were things I kept repeating for every project. And there were things I just wished there was a better way of doing them. I created this CLI tool to address _the three concerns_ that mattered to me the most. Hopefully, it resonates with you too.
@@ -87,7 +90,7 @@ In creating REST APIs with the Django framework, I noticed there were things I k
   - A custom user model defined in a `users` app
   - Authentication endpoints.
   - [python-decouple](https://pypi.org/project/python-decouple/): for managing environment varibales 
-  - [drf-spactacular](https://drf-spectacular.readthedocs.io/en/latest/readme.html): for auto-generating APi docs 
+  - [drf-spactacular](https://drf-spectacular.readthedocs.io/en/latest/readme.html): for auto-generating API docs 
   - [dj-database-url](https://github.com/jazzband/dj-database-url): for connecting to various databases 
   - [pre-commit, black, isort, flake8](https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/): for code linting with pre-commit hooks 
   - [pytest-django](https://pytest-django.readthedocs.io/en/latest/): for writing unit tests with pytest 
@@ -95,7 +98,7 @@ In creating REST APIs with the Django framework, I noticed there were things I k
 
   So I wished there was a tool that could start my project with the integrations, and features I need configured. I found [cookie-cutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) to be useful, but sometimes it's just too heavy for my use-case. I needed something more flexible, something that could start my project with few integrations or all the features and integrations above. 
 
-  - **SOLUTION:** This CLI tool allows you start your project from one of three templates we provide: Basic, Medior, and Advanced templates. Depending on what template you select, you could scaffold your project with just python_decouple for managing env vars. Or you could go with something as complex as adding pytest for unit tests, drf_spectacular for auto-generating docs, authentication endpoints, pre-commit hook for code linting setup in your project, and docker support. Regardless of the template you select, we initialize git, and add a readme to your project.
+  - **SOLUTION:** This CLI tool allows you start your project from one of three templates we provide: **Basic, Medior, and Advanced** templates. Depending on what template you select, you could scaffold your project with just python_decouple for managing env vars. Or you could go with something as complex as adding pytest for unit tests, drf_spectacular for auto-generating docs, authentication endpoints, pre-commit hook for code linting setup in your project, and docker support. Regardless of the template you select, we initialize git, install all project dependencies if internet connection is detected, and add a readme to your project.
 
 
 - **PROBLEM-2:** I noticed most times I needed CRUD endpoints for the models I define. CRUD endpoints are so unchanging that I wish there was a tool that could just generate all the CRUD endpoints for the models I define.
@@ -118,7 +121,7 @@ In building this I re-used a few parts of these repositories in this project:
 
 
 ## I Love this, how can I thank you Nyior?
-Just let your developer friends know about this repo :) If you star this repo too I won't complain xD
+Please let your developer friends know about this repo :) If you star this repo too I won't complain xD
 
 
 ## Licence
