@@ -58,7 +58,8 @@ def append_file_content(file_path, tail):
 
 def wrap_file_content(file_path, head, tail):
     """
-    wraps a file content between two strings and sets the result as the content of the file
+    wraps a file content between two strings and
+    sets the result as the content of the file
     """
     prepend_file_content(file_path, head)
     append_file_content(file_path, tail)
