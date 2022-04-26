@@ -1,7 +1,7 @@
 # Basic Template
 The Basic template comes bundled with:
 
-- Initialized with .git
+- git initialized
 - Readme file with project setup instructions
 - python-decouple: for managing environment varibales 
 [See Package Docs Here](https://pypi.org/project/python-decouple/). 
