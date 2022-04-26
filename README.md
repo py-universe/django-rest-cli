@@ -41,12 +41,12 @@ working on it
 
 ## Usage: How to Work with this Tool
 
-### Step-1: Installation
+### Installation
 ```pip install dr-cli```
 
 I highly recommend that you install this in a virtual environment.
 
-### Step-2: Create a New Project
+### Create a New Project
 - Run ```dr-cli startproject project_name``` to start a new DRF project.
 
 - You'd be prompted to start your project from one of three templates: **Baisc, Medior, and Advanced** templates. Learn more about what each template comes bundled with [here](https://github.com/py-universe/django-rest-cli/blob/docs/templatesInfo.md).
@@ -58,7 +58,7 @@ I highly recommend that you install this in a virtual environment.
 The generated project comes with a nice Readme containing the steps for running the project
 
 
-### Step-3: Create New Apps in your Project
+### Create New Apps in your Project
 - Run ```dr-cli startapps todo me-nu user``` to create multiple Django apps in your project. Where `todo me-nu user` are your app names.
 
 - Running the above command will create all your apps. Name validations would also be performed as shown in the image below:
@@ -68,7 +68,7 @@ The generated project comes with a nice Readme containing the steps for running 
 **Note** Make sure to add your created apps to the list of INSTALLED APPS
 
 
-### Step-4: Generate CRUD Endpoints for your Apps
+### Generate CRUD Endpoints for your Apps
 - Run ```dr-cli addcrud memo user``` to create CRUD endpoints for the models defined in the specified apps. 
 
 - Running the above command would return a nice looking feedback as shown in the image below:
@@ -79,7 +79,7 @@ The generated project comes with a nice Readme containing the steps for running 
 
 On Windows, Emojis are only supported in [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3?activetab=pivot:overviewtab)
 
-### Step-5: Accessing the docs page
+### Accessing the docs page
 - Run `python manage.py runserver` to fire up your local development server, and point your browser to `http://localhost:8000/api/v1/docs` to view the auto-generated docs page shown in the image below:
 
 <img src="./assets/docs.PNG">
