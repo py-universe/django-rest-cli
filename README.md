@@ -37,7 +37,7 @@ For example, if you define a model, **Product** in your `models.py` file, this t
 
 
 ## Demo
-this is stressing me out
+<img src="./assets/demo-min.gif">
 
 ## Getting Started
 
