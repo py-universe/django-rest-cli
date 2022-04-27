@@ -37,9 +37,9 @@ For example, if you define a model, **Product** in your `models.py` file, this t
 
 
 ## Demo
-working on it
+<img src="https://drive.google.com/file/d/12imZt6aM6UoqLEvsHAogoEZuWDiUwSgP/view?usp=sharing">
 
-## Usage: How to Work with this Tool
+## Getting Started
 
 ### Installation
 ```pip install dr-cli```
