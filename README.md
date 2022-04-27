@@ -37,7 +37,7 @@ For example, if you define a model, **Product** in your `models.py` file, this t
 
 
 ## Demo
-working on it
+this is stressing me out
 
 ## Usage: How to Work with this Tool
 
