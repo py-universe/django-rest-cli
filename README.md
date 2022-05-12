@@ -49,7 +49,7 @@ I highly recommend that you install this in a virtual environment.
 ### Create a New Project
 - Run ```dr-cli startproject project_name``` to start a new DRF project.
 
-- You'd be prompted to start your project from one of three templates: **Baisc, Medior, and Advanced** templates. Learn more about what each template comes bundled with [here](https://github.com/py-universe/django-rest-cli/blob/docs/templatesInfo.md).
+- You'd be prompted to start your project from one of three templates: **Basic, Medior, and Advanced** templates. Learn more about what each template comes bundled with [here](https://github.com/py-universe/django-rest-cli/blob/docs/templatesInfo.md).
 
 - On selecting one of the templates your project will then be created. Git will be initialized in your project, and all project dependencies installed as shown in the image below:
 
@@ -92,7 +92,7 @@ In creating REST APIs with the Django framework, I noticed there were things I k
   - A custom user model defined in a `users` app
   - Authentication endpoints.
   - [python-decouple](https://pypi.org/project/python-decouple/): for managing environment varibales 
-  - [drf-spactacular](https://drf-spectacular.readthedocs.io/en/latest/readme.html): for auto-generating API docs 
+  - [drf-spectacular](https://drf-spectacular.readthedocs.io/en/latest/readme.html): for auto-generating API docs 
   - [dj-database-url](https://github.com/jazzband/dj-database-url): for connecting to various databases 
   - [pre-commit, black, isort, flake8](https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/): for code linting with pre-commit hooks 
   - [pytest-django](https://pytest-django.readthedocs.io/en/latest/): for writing unit tests with pytest 
