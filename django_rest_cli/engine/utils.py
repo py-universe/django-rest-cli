@@ -7,6 +7,8 @@ import colorama
 import inflect
 from termcolor import cprint
 
+from .enums import Templates
+
 
 def raise_error_message(error_text: str, exception: Exception):
     raise exception(error_text)
@@ -97,3 +99,41 @@ def pluralize(string):
     """
     pluralizer = inflect.engine()
     return pluralizer.plural(string)
+
+
+def display_project_setup_instructions(
+    template_type: str,
+) -> None:
+    if Templates.BASIC.value in template_type:
+        print_info_message(
+            "Project Run Steps:Run the following commands\n\n"
+            """pip install -r requirements.txt
+            NB: Skip the above command if dr-cli already installed dependencies \n"""
+            "python manage.py migrate \n"
+            "python manage.py runserver \n"
+            "point your browser to `http://localhost:8000/api/v1/docs to view docs \n"
+        )
+
+    if Templates.MEDIOR.value in template_type:
+        print_info_message(
+            "Project Run Steps: Run the following commands:\n\n"
+            """pip install -r requirements.txt
+            Then runpip install -r requirements-dev.txt
+            NB: Skip the above commands if dr-cli already installed dependencies \n"""
+            "pre-commit install \n"
+            "python manage.py makemigrations users \n"
+            "python manage.py migrate \n"
+            "python manage.py runserver \n"
+            "Point your browser to http://localhost:8000/api/v1/docs to view docs \n"
+        )
+
+    if Templates.ADV.value in template_type:
+        print_info_message(
+            "Project Run Steps: Run the following commands\n\n"
+            "pre-commit install \n"
+            "docker-compose up --build \n"
+            "Navigate to your project directory in a new terminal and run:\n\n"
+            "docker-compose exec web python manage.py makemigrations users \n"
+            "docker-compose exec web python manage.py migrate \n"
+            "Point your browser to http://localhost:8000/api/v1/docs to view docs \n"
+        )
