@@ -3,6 +3,7 @@ from typing import Optional
 
 from django_rest_cli.engine.cli.mixins import ProjectConfigMixin
 from django_rest_cli.engine.utils import (
+    display_project_setup_instructions,
     init_git_repo,
     install_dependencies,
     rename_file,
@@ -13,7 +14,9 @@ from .base import Base, Startable
 
 class StartProject(ProjectConfigMixin, Base):
     @staticmethod
-    def __follow_up_start_project(name: str, directory: Optional[str] = None) -> None:
+    def __follow_up_start_project(
+        name: str, template_type: str, directory: Optional[str] = None
+    ) -> None:
         if directory is None:
             manage_dir: pathlib.Path = pathlib.Path(".") / name
         else:
@@ -35,6 +38,7 @@ class StartProject(ProjectConfigMixin, Base):
 
         init_git_repo(manage_dir)
         install_dependencies(manage_dir)
+        display_project_setup_instructions(template_type)
 
     @classmethod
     async def __start(
@@ -48,7 +52,7 @@ class StartProject(ProjectConfigMixin, Base):
         template: str = f"{what.name}_TEMPLATE_URL_{template_type.upper()}"
 
         await Base.run_cmd_command(directive, name, directory, template)
-        cls.__follow_up_start_project(name)
+        cls.__follow_up_start_project(name, template_type)
 
     @classmethod
     async def start_project(
