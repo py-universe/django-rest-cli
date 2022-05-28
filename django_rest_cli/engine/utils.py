@@ -107,8 +107,8 @@ def display_project_setup_instructions(
     if Templates.BASIC.value in template_type:
         print_info_message(
             "Project Run Steps:Run the following commands\n\n"
-            """pip install -r requirements.txt --Ignore this if dr-cli
-            already installed dependencies \n"""
+            """pip install -r requirements.txt
+            NB: Skip the above command if dr-cli already installed dependencies \n"""
             "python manage.py migrate \n"
             "python manage.py runserver \n"
             "point your browser to `http://localhost:8000/api/v1/docs to view docs \n"
@@ -117,9 +117,9 @@ def display_project_setup_instructions(
     if Templates.MEDIOR.value in template_type:
         print_info_message(
             "Project Run Steps: Run the following commands:\n\n"
-            """pip install -r requirements.txt and
-            pip install -r requirements-dev.txt
-            --Ignore this if dr-cli installed dependencies \n"""
+            """pip install -r requirements.txt
+            Then runpip install -r requirements-dev.txt
+            NB: Skip the above commands if dr-cli already installed dependencies \n"""
             "pre-commit install \n"
             "python manage.py makemigrations users \n"
             "python manage.py migrate \n"
