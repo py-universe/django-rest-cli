@@ -125,6 +125,9 @@ In building this I re-used a few parts of these repositories in this project:
 ## I Love this, how can I thank you Nyior?
 Please let your developer friends know about this repo :) If you star this repo too I won't complain xD
 
+## Limitations
+Python310 isn't supported in this project yet. We are working on it.
+
 
 ## Licence
 MIT
